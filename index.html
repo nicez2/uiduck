@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>uiduck demo</title>
+	<meta name="renderer" content="webkit">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<link href="css/layui.css" type="text/css" rel="stylesheet">
+	<link href="uiduck/css/uiduck.css" type="text/css" rel="stylesheet">
+	<link href="uiduck/css/table.css" type="text/css" rel="stylesheet">
+
+
+</head>
+
+<BODY>
+	
+	<div style="width: 80%;padding: 0 10%;">
+		<blockquote class="layui-elem-quote">#一款前端表格插件，功能强大，支持前后端分页，模板语法，接入三方UI库。</blockquote>
+		<!--以下为两个必须div元素-->
+		<script type="text/html" id="barDemo">
+			<button class="uiduck-btn" onClick=getRow(this);>获取此行数据</button>
+		</script>
+		<div id="table"></div>
+		<div id="pageBar"></div>
+	</div>
+
+</body>
+<script language="Javascript" src="js/jquery.min.js"></script>
+<script language="Javascript" src="js/json2.js"></script>
+<script language="Javascript" src="js/uiduck.js"></script>
+<script LANGUAGE="javascript">
+	uiduck.setOptions({
+		templateId: "table",
+		url: { url: "http://data.live.126.net/livechannel/sub/3.json", type: "POST" },
+		style: { theme: "uiduck-dark", size: "mini", stripe: false, highlight: true, tbClass: "uiduck-table" },
+		language: { tag: 'English' },
+		topBar: { templateId: "search", kwLight: true},
+		rightTool: { templateId: "barDemo", title: "操作", width: "100px" },
+		//autoNext: { time: 3000, showPage: true },
+		loading: { icon: "uiduck-loading-4", shade: "red" },
+		page: true,
+		pageOptions: { style: "", limit: 20, limits: ['5', '10', '15', '20', '25'], dataType: "front", index: 0 },
+		fieldOptions: [
+			{
+				index: true,
+				title: "序号"
+			},
+			{
+				key: "cid",
+				title: "ID"
+			}, {
+				key: "cname",
+				title: "类型"
+			}, {
+				key: "collectionId",
+				title: "收藏ID",
+				type:"map",
+				computed:{
+					"0":"测试",
+					"1":"直播",
+					"2":"转播",
+					"3":"转播"
+				}
+			}, {
+				key: "ename",
+				title: "名称"
+			}, {
+				key: "icon",
+				title: "图标",
+				type:"image",
+			}, {
+				key: "tid",
+				title: "TID"
+			}, {
+				key: "tname",
+				title: "节目名称"
+			}]
+	});
+
+	function getRow(e) {
+		alert(JSON.stringify(uiduck.getRow(e)))
+
+	}
+	function updateData() {
+		uiduck.dataFilter({ "SS": "ddd" });
+	}
+</script>
+
+</html>
