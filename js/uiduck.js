@@ -4,7 +4,9 @@
  * E-mail:hzdz163@163.com
  * Version:1.0.1
  * 本程序的版权遵循创作共用原则，你可以免费使用、修改、发布本程序，但此注释不可删除并请注明原作者
- * If you think this application infringes your right,this comment cannot be deleted and please contact me.
+ * The copyright of this program follows the principle of creative Commons, you can use,
+ * modify and distribute this program for free, but this annotation cannot be deleted,
+ * please indicate the original author.
  * uiduck MIT License By https://www.uiduck.com 
  */
 uiduck = {
@@ -15,11 +17,12 @@ uiduck = {
     style: { theme: "uiduck-dark", size: "mini", stripe: false, highlight: true, tbClass: "", trClass: "", thClass: "", tdClass: "" },
     topBar: { templateId: "search", kwLight: true, kwSplite: false, kwSpliteList: [] },
     rightTool: { templateId: "", title: "", width: "" },
-    loading: { icon: "loading", shade: "red" },
+    loading: { icon: "loading", shade: false, shadeColor: "white" },
     language: { tag: "CN", options: [] },
     page: true,
     pageOptions: { style: "", limit: "", dataType: "back", limits: ['10', '20', '30', '40', '50'], layout: ["total", "home", "prev", "next", "last", "set", "jump"], index: 0, count: 0 },
     fieldOptions: [],
+    udKey: 'uiduck_' + (new Date()).valueOf(),
     setOptions: function (b) {
 
         var refresh;
@@ -142,24 +145,18 @@ uiduck = {
         if (b.loading == undefined) {
             uiduck.loading = false
         } else {
+            if (b.loading.time == undefined) {
+                b.loading.time = 500;
+            }
+            if (b.loading.shadeColor == undefined) {
+                b.loading.shadeColor = "transparent";
+            }
+            if (b.loading.blur == undefined) {
+                b.loading.blur = false;
+            }
             uiduck.loading = b.loading
         }
-        if (b.overClick == undefined) {
-            uiduck.overClick = false
-        } else {
-            uiduck.overClick = b.overClick
-        }
-        if (b.fold == undefined) {
-            uiduck.fold = false
-        } else {
-            uiduck.fold = b.fold
-        }
 
-        if (b.highPerformance == undefined) {
-            uiduck.highPerformance = false
-        } else {
-            uiduck.highPerformance = b.highPerformance
-        }
         if (b.fieldOptions == undefined) {
             console.error("error! table's fieldOptions is undefined")
         } else {
@@ -174,8 +171,8 @@ uiduck = {
                 uiduck.nextPage();
             }, uiduck.autoNext.time)
         }
-        console.log('%chello uiduck', "color:red;font-weight:bold;");
-        console.log('%c如需帮助 http://uiduck.com', "color:red;");
+        console.log('%chello uiduck', "color:black;font-weight:bold;");
+        console.log('%c如需帮助 http://uiduck.com', "color:blue;");
         uiduck.render(uiduck, refresh);
     },
     getAjaxData: function (e, check) {
@@ -229,14 +226,12 @@ uiduck = {
     },
     render: function (uiduck, refresh) {
         $("#" + uiduck.templateId).empty();
-        if (uiduck.loading) {
-            uiduck.showLoading();
-        }
+
         var c = '';
         if (uiduck.style.tbClass) {
-            c += '<table class="' + uiduck.style.tbClass + '">';
+            c += '<table id=' + uiduck.udKey + ' class="' + uiduck.style.tbClass + '">';
         } else {
-            c += '<table class="uiduck-table">';
+            c += '<table id=' + uiduck.udKey + 'class="uiduck-table">';
         }
         c += (uiduck.setHead(uiduck));
         if (refresh) {
@@ -252,6 +247,9 @@ uiduck = {
             }
         }
         $("#" + uiduck.templateId).append(c);
+        if (uiduck.loading && uiduck.data.length > 0) {
+            uiduck.showLoading(uiduck);
+        }
         if (uiduck.pageOptions.layout.indexOf('set') != -1) {
             $("#ud-page-select").trigger("change");
         }
@@ -449,23 +447,47 @@ uiduck = {
         return h
     },
     showLoading: function (e) {
-        $("#" + uiduck.templateId).addClass("uiduck-shade")
-        var a = document.getElementById(uiduck.templateId);//获取div块对象
-        var Height = $(window).height();//取得浏览器页面可视区域的宽度
-        var Width = $(window).width();//取得浏览器页面可视区域的宽度
-        var v = a.offsetHeight;//获取div块的高度值
-        var b = a.offsetWidth;//获取div块的宽度值
-        var s = (Height - v) / 2 + "px";
-        var h = ((Width / 4) + (b / 4)) + "px";
-        var loadingHtml = '<img id="ud-loading" style="position: absolute;top:' + s + ';left:' + h + ';width: 100px; height:100px; z-index: 1002" src="uiduck/assets/' + uiduck.loading.icon + '.gif" />';
+
+        var Width = $("#" + uiduck.udKey).width() / 50 + 'px';
+        var rect = document.getElementById(uiduck.udKey).getBoundingClientRect();
+        var center = {
+            left: rect.left + (rect.right - rect.left) / 2,
+            top: rect.top + (rect.bottom - rect.top) / 2
+        }
+        var scrollLeft = document.body.scrollLeft || document.documentElement.scrollLeft;
+        var scrollTop = document.body.scrollTop || document.documentElement.scrollTop;
+
+        center.left = scrollLeft + center.left;
+        center.top = scrollTop + center.top;
+        var shade = 'left:' + rect.left + 'px;' + 'top:' + rect.top + 'px;';
+        var position = 'left:' + center.left + 'px;' + 'top:' + center.top + 'px;';
+        if (e.loading.shade ) {
+            var shadeHtml = '<div id="ud-shade" style="position: absolute;' + shade + ';width: ' + rect.width + 'px; height: ' + rect.height + 'px; z-index: 1002;background-color:' + e.loading.shadeColor + ';opacity:' + e.loading.shade + ';transition=opacity .5s" /></div>';
+            $("#" + uiduck.templateId).append(shadeHtml);
+        }
+        if (e.loading.blur) {
+            $("#" + uiduck.udKey).css('filter', 'blur(' + e.loading.blur + 'px)');
+            $("#" + uiduck.udKey).css('-webkit-filter', 'blur(' + e.loading.blur + 'px)');
+            $("#" + uiduck.udKey).css('-ms-filter', 'blur(' + e.loading.blur + 'px)');
+            $("#" + uiduck.udKey).css(' -moz-filter', 'blur(' + e.loading.blur + 'px)');
+        }
+        var loadingHtml = '<img id="ud-loading" style="position: absolute;' + position + ';width: ' + Width + '; height: ' + Width + '; z-index: 1003" src="uiduck/assets/' + uiduck.loading.icon + '.gif" />';
         $("#" + uiduck.templateId).append(loadingHtml);
         $("#ud-loading").css('display', 'block');
     },
     hideLoading: function (e) {
         setTimeout(function () {
             $("#ud-loading").css('display', 'none');
-            $("#" + uiduck.templateId).removeClass("uiduck-shade")
-        }, 500)
+            if (uiduck.loading.shade) {
+                $("#ud-shade").remove();
+            }
+            if (uiduck.loading.blur) {
+                $("#" + uiduck.udKey).css('filter', 'blur(0px)');
+                $("#" + uiduck.udKey).css('-webkit-filter', 'blur(0px)');
+                $("#" + uiduck.udKey).css('-ms-filter', 'blur(0px)');
+                $("#" + uiduck.udKey).css(' -moz-filter', 'blur(0px)');
+            }
+        }, uiduck.loading.time)
 
     },
     getRow: function (e) {

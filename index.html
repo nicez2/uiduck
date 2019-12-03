@@ -15,7 +15,7 @@
 </head>
 
 <BODY>
-	
+
 	<div style="width: 80%;padding: 0 10%;">
 		<blockquote class="layui-elem-quote">#一款前端表格插件，功能强大，支持前后端分页，模板语法，接入三方UI库。</blockquote>
 		<!--以下为两个必须div元素-->
@@ -36,10 +36,10 @@
 		url: { url: "http://data.live.126.net/livechannel/sub/3.json", type: "POST" },
 		style: { theme: "uiduck-dark", size: "mini", stripe: false, highlight: true, tbClass: "uiduck-table" },
 		language: { tag: 'English' },
-		topBar: { templateId: "search", kwLight: true},
+		topBar: { templateId: "search", kwLight: true },
 		rightTool: { templateId: "barDemo", title: "操作", width: "100px" },
 		//autoNext: { time: 3000, showPage: true },
-		loading: { icon: "uiduck-loading-4", shade: "red" },
+		loading: { icon: "uiduck-loading-6",shade:0.5,blur:"2" },
 		page: true,
 		pageOptions: { style: "", limit: 20, limits: ['5', '10', '15', '20', '25'], dataType: "front", index: 0 },
 		fieldOptions: [
@@ -56,12 +56,12 @@
 			}, {
 				key: "collectionId",
 				title: "收藏ID",
-				type:"map",
-				computed:{
-					"0":"测试",
-					"1":"直播",
-					"2":"转播",
-					"3":"转播"
+				type: "map",
+				computed: {
+					"0": "测试",
+					"1": "直播",
+					"2": "转播",
+					"3": "转播"
 				}
 			}, {
 				key: "ename",
@@ -69,7 +69,7 @@
 			}, {
 				key: "icon",
 				title: "图标",
-				type:"image",
+				type: "image",
 			}, {
 				key: "tid",
 				title: "TID"
