@@ -7,6 +7,7 @@
  * The copyright of this program follows the principle of creative Commons, you can use,
  * modify and distribute this program for free, but this annotation cannot be deleted,
  * please indicate the original author.
+ * github https://github.com/nicez2/uiduck 
  * uiduck MIT License By https://www.uiduck.com 
  */
 uiduck = {
@@ -14,7 +15,7 @@ uiduck = {
     url: { url: "", type: "", data: {} },
     data: [],
     autoNext: { time: 2000, showPage: true },
-    style: { theme: "uiduck-dark", size: "mini", stripe: false, highlight: true, tbClass: "", trClass: "", thClass: "", tdClass: "" },
+    style: { size: "mini", stripe: false, highlight: true, tbClass: "", trClass: "", thClass: "", tdClass: "" },
     topBar: { templateId: "search", kwLight: true, kwSplite: false, kwSpliteList: [] },
     rightTool: { templateId: "", title: "", width: "" },
     loading: { icon: "loading", shade: false, shadeColor: "white" },
@@ -24,12 +25,14 @@ uiduck = {
     fieldOptions: [],
     udKey: 'uiduck_' + (new Date()).valueOf(),
     setOptions: function (b) {
-
+        
+        console.clear();
         var refresh;
         if (b.templateId == undefined) {
             console.error("error! table's templateId is undefined")
         } else {
             uiduck.templateId = b.templateId
+            $("#" + uiduck.templateId).html();
         }
         if (b.url == undefined) {
             uiduck.url = false;
@@ -116,13 +119,14 @@ uiduck = {
         } else {
             uiduck.pageOptions.emClass = b.pageOptions.emClass;
         }
+
         if (b.editable == undefined) {
             uiduck.editable = false
         } else {
             uiduck.editable = b.editable
         }
         if (b.topBar == undefined) {
-            uiduck.topBar = false
+            uiduck.topBar = undefined
         } else {
             uiduck.topBar = b.topBar
             if (uiduck.topBar.templateId == undefined) {
@@ -149,7 +153,12 @@ uiduck = {
                 b.loading.time = 500;
             }
             if (b.loading.shadeColor == undefined) {
-                b.loading.shadeColor = "transparent";
+                if (b.loading.shade == undefined) {
+                    b.loading.shadeColor = "transparent";
+                } else {
+                    b.loading.shadeColor = "white";
+                }
+
             }
             if (b.loading.blur == undefined) {
                 b.loading.blur = false;
@@ -171,8 +180,13 @@ uiduck = {
                 uiduck.nextPage();
             }, uiduck.autoNext.time)
         }
-        console.log('%chello uiduck', "color:black;font-weight:bold;");
-        console.log('%c如需帮助 http://uiduck.com', "color:blue;");
+        console.log('%cHi uiduck', "color:black;font-weight:bold;");
+        console.log('%c官网 http://uiduck.com', "color:blue;");
+        console.log('%cGithub https://github.com/nicez2/uiduck', "color:blue;");
+        //可删除
+        console.log('%c本程序的版权遵循创作共用原则，你可以免费使用、修改、发布本程序，但顶部注释不可删除并请注明原作者', "color:gray;");
+
+        uiduck.pageOptions.index = 0;
         uiduck.render(uiduck, refresh);
     },
     getAjaxData: function (e, check) {
@@ -187,11 +201,12 @@ uiduck = {
             //数据，json字符串
             //请求成功
             success: function (result) {
-                uiduck.setData(result.sublives, check);
+                var key = e.url.key
+                e.setData(result[key], check);
             },
             //请求失败，包含具体的错误信息
             error: function (e) {
-                uiduck.setData([], check)
+                e.setData([], check)
             }
         });
     },
@@ -348,7 +363,7 @@ uiduck = {
                 }
             }
         }
-        if (!e.topBar || uiduckJL != undefined) {
+        if (e.topBar == undefined && uiduckJL != undefined) {
             for (var i = 0; i < uiduckJL.length; i++) {
                 h += "<tr  id=ud-tr-" + i + " ud-tr-num=" + i + " class=" + e.style.trClass + ">";
                 if (e.index) {
@@ -360,7 +375,7 @@ uiduck = {
                             if (uiduckFO[k].type == 'map') {
                                 h += "<td  class=" + e.style.tdClass + ">" + uiduckFO[k].computed[uiduckJL[i][keys]] + "</td>";
                             } else if (uiduckFO[k].type == 'image') {
-                                h += "<td  class=" + e.style.tdClass + "><img src=" + uiduckJL[i][keys] + "/></td>";
+                                h += "<td  class=" + e.style.tdClass + "><img style='width:" + uiduckFO[k].width + ";height:" + uiduckFO[k].height + "' src=" + uiduckJL[i][keys] + "></td>";
                             } else {
                                 h += "<td  class=" + e.style.tdClass + ">" + uiduckJL[i][keys] + "</td>";
                             }
@@ -373,7 +388,7 @@ uiduck = {
                 }
             }
         } else {
-            if (e.topBar.splite || uiduckJL != undefined) {
+            if (e.topBar.kwSplite != undefined && uiduckJL != undefined) {
                 for (var i = 0; i < uiduckJL.length; i++) {
                     h += "<tr id=ud-tr-" + i + " ud-tr-num=" + i + " class=" + e.style.trClass + ">";
                     if (e.index) {
@@ -385,7 +400,7 @@ uiduck = {
                                 if (uiduckFO[k].type == 'map') {
                                     h += "<td  class=" + e.style.tdClass + ">" + uiduckFO[k].computed[uiduckJL[i][keys]] + "</td>";
                                 } else if (uiduckFO[k].type == 'image') {
-                                    h += "<td  class=" + e.style.tdClass + "><img src=" + uiduckJL[i][keys] + "/></td>";
+                                    h += "<td  class=" + e.style.tdClass + "><img style='width:" + uiduckFO[k].width + ";height:" + uiduckFO[k].height + "' src=" + uiduckJL[i][keys] + "></td>";
                                 } else {
                                     h += "<td  class=" + e.style.tdClass + ">" + uiduckJL[i][keys] + "</td>";
                                 }
@@ -397,7 +412,7 @@ uiduck = {
                     }
                 }
             } else {
-                if ($("#" + e.topBar.templateId).attr("ud-keyWord") == undefined || uiduckJL != undefined) {
+                if ($("#" + e.topBar.templateId).attr("ud-keyWord") == undefined && uiduckJL != undefined) {
                     for (var i = 0; i < uiduckJL.length; i++) {
                         h += "<tr id=ud-tr-" + i + " ud-tr-num=" + i + " class=" + e.style.trClass + ">";
                         if (e.index) {
@@ -429,7 +444,7 @@ uiduck = {
                                         if (uiduckFO[k].type == 'map') {
                                             h += "<td  class=" + e.style.tdClass + ">" + uiduckFO[k].computed[uiduckJL[i][keys]] + "</td>";
                                         } else if (uiduckFO[k].type == 'image') {
-                                            h += "<td  class=" + e.style.tdClass + "><img src=" + uiduckJL[i][keys] + "/></td>";
+                                            h += "<td  class=" + e.style.tdClass + "><img style='width:" + uiduckFO[k].width + ";height:" + uiduckFO[k].height + "' src=" + uiduckJL[i][keys] + "></td>";
                                         } else {
                                             h += "<td  class=" + e.style.tdClass + ">" + uiduckJL[i][keys] + "</td>";
                                         }
@@ -461,8 +476,8 @@ uiduck = {
         center.top = scrollTop + center.top;
         var shade = 'left:' + rect.left + 'px;' + 'top:' + rect.top + 'px;';
         var position = 'left:' + center.left + 'px;' + 'top:' + center.top + 'px;';
-        if (e.loading.shade ) {
-            var shadeHtml = '<div id="ud-shade" style="position: absolute;' + shade + ';width: ' + rect.width + 'px; height: ' + rect.height + 'px; z-index: 1002;background-color:' + e.loading.shadeColor + ';opacity:' + e.loading.shade + ';transition=opacity .5s" /></div>';
+        if (e.loading.shade) {
+            var shadeHtml = '<div id="ud-shade" style="position: absolute;' + shade + ';width: ' + rect.width + 'px; height: ' + rect.height + 'px; z-index: 1002;background-color:' + e.loading.shadeColor + ';opacity:' + e.loading.shade + ';transition:opacity .5s" /></div>';
             $("#" + uiduck.templateId).append(shadeHtml);
         }
         if (e.loading.blur) {
@@ -470,6 +485,7 @@ uiduck = {
             $("#" + uiduck.udKey).css('-webkit-filter', 'blur(' + e.loading.blur + 'px)');
             $("#" + uiduck.udKey).css('-ms-filter', 'blur(' + e.loading.blur + 'px)');
             $("#" + uiduck.udKey).css(' -moz-filter', 'blur(' + e.loading.blur + 'px)');
+            $("#" + uiduck.udKey).css('transition', 'filter .5s');
         }
         var loadingHtml = '<img id="ud-loading" style="position: absolute;' + position + ';width: ' + Width + '; height: ' + Width + '; z-index: 1003" src="uiduck/assets/' + uiduck.loading.icon + '.gif" />';
         $("#" + uiduck.templateId).append(loadingHtml);
@@ -486,9 +502,9 @@ uiduck = {
                 $("#" + uiduck.udKey).css('-webkit-filter', 'blur(0px)');
                 $("#" + uiduck.udKey).css('-ms-filter', 'blur(0px)');
                 $("#" + uiduck.udKey).css(' -moz-filter', 'blur(0px)');
+                $("#" + uiduck.udKey).css('transition', 'filter .5s');
             }
         }, uiduck.loading.time)
-
     },
     getRow: function (e) {
         var index = $(e).parent().attr("ud-index");
