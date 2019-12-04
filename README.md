@@ -21,3 +21,55 @@
 ````
 ### 使用配置说明
 - 通过调用uiduck.setOptions()完成初始化
+### 配置示例
+````javascript
+uiduck.setOptions({
+		templateId: "table",
+		url: { url: "http://data.live.126.net/livechannel/sub/3.json", type: "POST", key: "sublives" },
+		style: { size: "mini", stripe: false, highlight: true, tbClass: "uiduck-table" },
+		topBar: { templateId: "search", kwLight: true },
+		rightTool: { templateId: "barDemo", title: "操作", width: "100px" },
+		//autoNext: { time: 3000, showPage: true },
+		loading: { icon: "uiduck-loading-6" },
+		page: true,
+		pageOptions: { style: "", limit: 10, limits: ['5', '10', '15', '20', '25'], dataType: "front" },
+		fieldOptions: [
+			{
+				index: true,
+				title: "序号"
+			},
+			{
+				key: "cid",
+				title: "ID"
+			}, {
+				key: "cname",
+				title: "类型"
+			}, {
+				key: "collectionId",
+				title: "测试",
+				type: "map",
+				computed: {
+					"0": "李白",
+					"1": "杜甫",
+					"2": "白居易",
+					"3": "王安石"
+				}
+			}, {
+				key: "icon",
+				title: "图标",
+				type: "image",
+				width: "30px",
+				height: "30px",
+			}, {
+				key: "ename",
+				title: "名称"
+			},
+			{
+				key: "tid",
+				title: "TID"
+			}, {
+				key: "tname",
+				title: "节目名称"
+			}]
+	});
+````
