@@ -73,10 +73,10 @@ uiduck = {
         }
         uiduck.language.options = uiduck.language(uiduck);
         if (b.style == undefined) {
-            uiduck.style = {}
+            uiduck.style = { tbClass: "uiduck-table", trClass: "", thClass: "", tdClass: "" }
         } else {
             if (b.style.tbClass == undefined) {
-                b.style.tbClass = 'uiduck-dark';
+                b.style.tbClass = 'uiduck-table';
             }
             if (b.style.trClass == undefined) {
                 b.style.trClass = '';
@@ -351,7 +351,7 @@ uiduck = {
                     uiduckJL = uiduck.data;
                 }
                 if (uiduckJL == undefined) {
-                    h += "<tr  id=ud-tr-" + i + " ud-tr-num=" + i + " class=" + e.style.trClass + ">";
+                    h += "<tr  id=ud-tr-" + i + " ud-tr-num=" + i + " class='uiduck_tr " + e.style.trClass + "' style='visibility:hidden'>";
                     if (e.rightTool) {
                         h += "<td  class='" + e.style.tdClass + "' colspan='" + parseInt(e.fieldOptions.length + 1) + "' style='text-align:center'>" + e.language.options.udNodata + "</td>";
                     } else {
@@ -369,7 +369,7 @@ uiduck = {
                 }
 
                 if (uiduckJL == undefined || uiduckJL.length == 0) {
-                    h += "<tr  id=ud-tr-" + i + " ud-tr-num=" + i + " class=" + e.style.trClass + ">";
+                    h += "<tr  id=ud-tr-" + i + " ud-tr-num=" + i + " class='uiduck_tr " + e.style.trClass + "' style='visibility:hidden'>";
                     if (e.rightTool) {
                         h += "<td  class='" + e.style.tdClass + "' colspan='" + parseInt(e.fieldOptions.length + 1) + "'>" + e.language.options.udNodata + "</td>";
                     } else {
@@ -384,7 +384,7 @@ uiduck = {
         }
         if (e.topBar == undefined && uiduckJL != undefined) {
             for (var i = 0; i < uiduckJL.length; i++) {
-                h += "<tr  id=ud-tr-" + i + " ud-tr-num=" + i + " class=" + e.style.trClass + ">";
+                h += "<tr  id=ud-tr-" + i + " ud-tr-num=" + i + " class='uiduck_tr " + e.style.trClass + "' style='visibility:hidden'>";
                 if (e.index) {
                     h += "<td class=" + e.style.tdClass + ">" + parseInt(uiduck.pageOptions.limit * uiduck.pageOptions.index + 1 + i) + "</td>";
                 }
@@ -409,7 +409,7 @@ uiduck = {
         } else {
             if (e.topBar.kwSplite != undefined && uiduckJL != undefined) {
                 for (var i = 0; i < uiduckJL.length; i++) {
-                    h += "<tr id=ud-tr-" + i + " ud-tr-num=" + i + " class=" + e.style.trClass + ">";
+                    h += "<tr id=ud-tr-" + i + " ud-tr-num=" + i + " class='uiduck_tr " + e.style.trClass + "' style='visibility:hidden'>";
                     if (e.index) {
                         h += "<td  class=" + e.style.tdClass + ">" + parseInt(limit * index + i + 1) + "</td>";
                     }
@@ -433,7 +433,7 @@ uiduck = {
             } else {
                 if ($("#" + e.topBar.templateId).attr("ud-keyWord") == undefined && uiduckJL != undefined) {
                     for (var i = 0; i < uiduckJL.length; i++) {
-                        h += "<tr id=ud-tr-" + i + " ud-tr-num=" + i + " class=" + e.style.trClass + ">";
+                        h += "<tr id=ud-tr-" + i + " ud-tr-num=" + i + " class='uiduck_tr " + e.style.trClass + "' style='visibility:hidden'>";
                         if (e.index) {
                             h += "<td  class=" + e.style.tdClass + ">" + parseInt(i + 1) + "</td>";
                         }
@@ -450,7 +450,7 @@ uiduck = {
                     }
                 } else if (uiduckJL != undefined) {
                     for (var i = 0; i < uiduckJL.length; i++) {
-                        h += "<tr id=ud-tr-" + i + " ud-tr-num=" + i + " class=" + e.style.trClass + ">";
+                        h += "<tr id=ud-tr-" + i + " ud-tr-num=" + i + " class='uiduck_tr " + e.style.trClass + "' style='visibility:hidden'>";
                         if (e.index) {
                             h += "<td  class=" + e.style.tdClass + ">" + parseInt(e.pageOptions.limit * e.pageOptions.index + i + 1) + "</td>";
                         }
@@ -507,6 +507,7 @@ uiduck = {
         var loadingHtml = '<img id="ud-loading" style="position: absolute;' + position + ';width: ' + Width + '; height: ' + Width + '; z-index: 1003" src="uiduck/assets/' + uiduck.loading.icon + '.gif" />';
         $("#" + uiduck.templateId).append(loadingHtml);
         $("#ud-loading").css('display', 'block');
+        $(".uiduck_tr").css('visibility', 'visible');
     },
     hideLoading: function (e) {
         setTimeout(function () {
