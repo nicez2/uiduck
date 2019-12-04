@@ -59,14 +59,11 @@ uiduck.setOptions({
 			}]
 	});
 ````
- *
+
  * Author:nicezz
  * E-mail:hzdz163@163.com
- * Version:1.0.1
- * 本程序的版权遵循创作共用原则，你可以免费使用、修改、发布本程序，但此注释不可删除并请注明原作者
+ * 本程序的版权遵循创作共用原则，你可以免费使用、修改、发布本程序，请注明原作者
  * The copyright of this program follows the principle of creative Commons, you can use,
- * modify and distribute this program for free, but this annotation cannot be deleted,
- * please indicate the original author.
+ * modify and distribute this program for free, please indicate the original author.
  * github https://github.com/nicez2/uiduck 
  * uiduck MIT License By https://www.uiduck.com 
- *
