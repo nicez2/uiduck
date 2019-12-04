@@ -4,7 +4,7 @@
 ![](https://ftp.bmp.ovh/imgs/2019/12/b44e473a1c2ebb74.png)
 ![](https://ftp.bmp.ovh/imgs/2019/12/ceebedf81ad1ec32.png)
 
-### [uiduck demo](http://118.24.149.105/demo/index.html)<br>
+### [uiduck demo](http://118.24.149.105/demo.html)<br>
 
 * 1.Author：nicezz email:hzdz163@163.com<br>
 
