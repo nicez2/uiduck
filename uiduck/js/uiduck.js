@@ -19,7 +19,7 @@ uiduck = {
     topBar: { templateId: "search", kwLight: true, kwSplite: false, kwSpliteList: [] },
     rightTool: { templateId: "", title: "", width: "" },
     loading: { icon: "loading", shade: false, shadeColor: "white" },
-    language: { tag: "CN", options: [] },
+    language: { tag: "Chinese", options: [] },
     page: true,
     pageOptions: { style: "", limit: "", dataType: "back", limits: ['10', '20', '30', '40', '50'], layout: ["total", "home", "prev", "next", "last", "set", "jump"], index: 0, count: 0 },
     fieldOptions: [],
@@ -491,7 +491,7 @@ uiduck = {
         var scrollTop = document.body.scrollTop || document.documentElement.scrollTop;
         center.left = scrollLeft + center.left;
         center.top = scrollTop + center.top;
-        var shade = 'left:' + rect.left + 'px;' + 'top:' + rect.top + 'px;';
+        var shade = 'left:' + rect.left + 'px;' + 'top:' + (scrollTop + rect.top) + 'px;';
         var position = 'left:' + center.left + 'px;' + 'top:' + center.top + 'px;';
         if (e.loading.shade) {
             var shadeHtml = '<div id="ud-shade" style="position: absolute;' + shade + ';width: ' + rect.width + 'px; height: ' + rect.height + 'px; z-index: 1002;background-color:' + e.loading.shadeColor + ';opacity:' + e.loading.shade + ';transition:opacity .5s;" /></div>';
