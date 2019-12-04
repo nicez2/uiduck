@@ -1,7 +1,8 @@
 # uiduck
 ### 前端表格插件，功能强大，支持前后端分页，模板语法，可接入三方UI库。<br>
-![Image text](https://github.com/duzhen-cn/wini-os/blob/master/img/QQ%E6%88%AA%E5%9B%BE20181011143040.jpg)
-![Image text](https://github.com/duzhen-cn/wini-os/blob/master/img/QQ%E6%88%AA%E5%9B%BE20181011143446.jpg)
+![](https://ftp.bmp.ovh/imgs/2019/12/7ae8cdfa99340008.png)
+![](https://ftp.bmp.ovh/imgs/2019/12/b44e473a1c2ebb74.png)
+![](https://ftp.bmp.ovh/imgs/2019/12/ceebedf81ad1ec32.png)
 
 ### [uiduck demo](http://118.24.149.105//demo/index.html)<br>
 
@@ -26,8 +27,7 @@
 uiduck.setOptions({
 		templateId: "table",
 		url: { url: "http://data.live.126.net/livechannel/sub/3.json", type: "POST", key: "sublives" },
-		rightTool: { templateId: "barDemo", title: "操作", width: "100px" },
-		loading: { icon: "uiduck-loading-6" },
+		loading: { icon: "uiduck-loading-1" },
 		page: true,
 		fieldOptions: [
 			{
@@ -59,3 +59,14 @@ uiduck.setOptions({
 			}]
 	});
 ````
+ *
+ * Author:nicezz
+ * E-mail:hzdz163@163.com
+ * Version:1.0.1
+ * 本程序的版权遵循创作共用原则，你可以免费使用、修改、发布本程序，但此注释不可删除并请注明原作者
+ * The copyright of this program follows the principle of creative Commons, you can use,
+ * modify and distribute this program for free, but this annotation cannot be deleted,
+ * please indicate the original author.
+ * github https://github.com/nicez2/uiduck 
+ * uiduck MIT License By https://www.uiduck.com 
+ *
