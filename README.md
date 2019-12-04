@@ -26,13 +26,10 @@
 uiduck.setOptions({
 		templateId: "table",
 		url: { url: "http://data.live.126.net/livechannel/sub/3.json", type: "POST", key: "sublives" },
-		style: { size: "mini", stripe: false, highlight: true, tbClass: "uiduck-table" },
-		topBar: { templateId: "search", kwLight: true },
+		style: { tbClass: "uiduck-table" },
 		rightTool: { templateId: "barDemo", title: "操作", width: "100px" },
-		//autoNext: { time: 3000, showPage: true },
 		loading: { icon: "uiduck-loading-6" },
 		page: true,
-		pageOptions: { style: "", limit: 10, limits: ['5', '10', '15', '20', '25'], dataType: "front" },
 		fieldOptions: [
 			{
 				index: true,
@@ -60,16 +57,6 @@ uiduck.setOptions({
 				type: "image",
 				width: "30px",
 				height: "30px",
-			}, {
-				key: "ename",
-				title: "名称"
-			},
-			{
-				key: "tid",
-				title: "TID"
-			}, {
-				key: "tname",
-				title: "节目名称"
 			}]
 	});
 ````
