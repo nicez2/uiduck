@@ -15,7 +15,7 @@ uiduck = {
     url: { url: "", type: "", data: {} },
     data: [],
     autoNext: { time: 2000, showPage: true },
-    style: { size: "mini", stripe: false, highlight: true, tbClass: "", trClass: "", thClass: "", tdClass: "" },
+    style: { size: "mini", stripe: false, tbClass: "", trClass: "", thClass: "", tdClass: "" },
     topBar: { templateId: "search", kwLight: true, kwSplite: false, kwSpliteList: [] },
     rightTool: { templateId: "", title: "", width: "" },
     loading: { icon: "loading", shade: false, shadeColor: "white" },
@@ -25,7 +25,6 @@ uiduck = {
     fieldOptions: [],
     udKey: 'uiduck_' + (new Date()).valueOf(),
     setOptions: function (b) {
-        
         console.clear();
         var refresh;
         if (b.templateId == undefined) {
@@ -74,10 +73,10 @@ uiduck = {
         }
         uiduck.language.options = uiduck.language(uiduck);
         if (b.style == undefined) {
-            uiduck.style = { theme: "uiduck-dark", size: "mini", stripe: false, highlight: true }
+            uiduck.style = {}
         } else {
             if (b.style.tbClass == undefined) {
-                b.style.tbClass = '';
+                b.style.tbClass = 'uiduck-dark';
             }
             if (b.style.trClass == undefined) {
                 b.style.trClass = '';
@@ -97,6 +96,9 @@ uiduck = {
             uiduck.page = false;
         } else if (b.page == true) {
             uiduck.page = true;
+            if (b.pageOptions == undefined) {
+                b.pageOptions = {}
+            }
             uiduck.pageOptions = b.pageOptions
         }
         if (b.pageOptions.layout == undefined) {
@@ -118,6 +120,16 @@ uiduck = {
             uiduck.pageOptions.emClass = 'uiduck-page-em';
         } else {
             uiduck.pageOptions.emClass = b.pageOptions.emClass;
+        }
+        if (b.pageOptions.dataType == undefined) {
+            uiduck.pageOptions.dataType = 'front';
+        } else {
+            uiduck.pageOptions.dataType = b.pageOptions.dataType;
+        }
+        if (b.pageOptions.limit == undefined) {
+            uiduck.pageOptions.limit = 5;
+        } else {
+            uiduck.pageOptions.limit = b.pageOptions.limit;
         }
 
         if (b.editable == undefined) {
@@ -173,11 +185,14 @@ uiduck = {
         }
         if (b.autoNext == undefined) {
             uiduck.autoNext = false;
-
         } else if (b.autoNext) {
             uiduck.autoNext = b.autoNext;
-            setInterval(function () {
-                uiduck.nextPage();
+            var interval = setInterval(function () {
+                if (uiduck.autoNext == false) {
+                    clearInterval(interval);
+                } else {
+                    uiduck.nextPage();
+                }
             }, uiduck.autoNext.time)
         }
         console.log('%cHi uiduck', "color:black;font-weight:bold;");
@@ -185,7 +200,6 @@ uiduck = {
         console.log('%cGithub https://github.com/nicez2/uiduck', "color:blue;");
         //可删除
         console.log('%c本程序的版权遵循创作共用原则，你可以免费使用、修改、发布本程序，但顶部注释不可删除并请注明原作者', "color:gray;");
-
         uiduck.pageOptions.index = 0;
         uiduck.render(uiduck, refresh);
     },
@@ -201,8 +215,12 @@ uiduck = {
             //数据，json字符串
             //请求成功
             success: function (result) {
-                var key = e.url.key
-                e.setData(result[key], check);
+                if (e.url.key) {
+                    var key = e.url.key
+                    e.setData(result[key], check);
+                } else {
+                    e.setData(result, check);
+                }
             },
             //请求失败，包含具体的错误信息
             error: function (e) {
@@ -243,10 +261,11 @@ uiduck = {
         $("#" + uiduck.templateId).empty();
 
         var c = '';
+
         if (uiduck.style.tbClass) {
             c += '<table id=' + uiduck.udKey + ' class="' + uiduck.style.tbClass + '">';
         } else {
-            c += '<table id=' + uiduck.udKey + 'class="uiduck-table">';
+            c += '<table id=' + uiduck.udKey + ' class="uiduck-table">';
         }
         c += (uiduck.setHead(uiduck));
         if (refresh) {
@@ -462,7 +481,6 @@ uiduck = {
         return h
     },
     showLoading: function (e) {
-
         var Width = $("#" + uiduck.udKey).width() / 50 + 'px';
         var rect = document.getElementById(uiduck.udKey).getBoundingClientRect();
         var center = {
@@ -471,13 +489,12 @@ uiduck = {
         }
         var scrollLeft = document.body.scrollLeft || document.documentElement.scrollLeft;
         var scrollTop = document.body.scrollTop || document.documentElement.scrollTop;
-
         center.left = scrollLeft + center.left;
         center.top = scrollTop + center.top;
         var shade = 'left:' + rect.left + 'px;' + 'top:' + rect.top + 'px;';
         var position = 'left:' + center.left + 'px;' + 'top:' + center.top + 'px;';
         if (e.loading.shade) {
-            var shadeHtml = '<div id="ud-shade" style="position: absolute;' + shade + ';width: ' + rect.width + 'px; height: ' + rect.height + 'px; z-index: 1002;background-color:' + e.loading.shadeColor + ';opacity:' + e.loading.shade + ';transition:opacity .5s" /></div>';
+            var shadeHtml = '<div id="ud-shade" style="position: absolute;' + shade + ';width: ' + rect.width + 'px; height: ' + rect.height + 'px; z-index: 1002;background-color:' + e.loading.shadeColor + ';opacity:' + e.loading.shade + ';transition:opacity .5s;" /></div>';
             $("#" + uiduck.templateId).append(shadeHtml);
         }
         if (e.loading.blur) {
