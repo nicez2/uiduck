@@ -26,7 +26,6 @@
 uiduck.setOptions({
 		templateId: "table",
 		url: { url: "http://data.live.126.net/livechannel/sub/3.json", type: "POST", key: "sublives" },
-		style: { tbClass: "uiduck-table" },
 		rightTool: { templateId: "barDemo", title: "操作", width: "100px" },
 		loading: { icon: "uiduck-loading-6" },
 		page: true,
