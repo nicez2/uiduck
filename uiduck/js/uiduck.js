@@ -131,7 +131,6 @@ uiduck = {
         } else {
             uiduck.pageOptions.limit = b.pageOptions.limit;
         }
-
         if (b.editable == undefined) {
             uiduck.editable = false
         } else {
@@ -170,14 +169,12 @@ uiduck = {
                 } else {
                     b.loading.shadeColor = "white";
                 }
-
             }
             if (b.loading.blur == undefined) {
                 b.loading.blur = false;
             }
             uiduck.loading = b.loading
         }
-
         if (b.fieldOptions == undefined) {
             console.error("error! table's fieldOptions is undefined")
         } else {
@@ -255,13 +252,10 @@ uiduck = {
         } else {
             uiduck.render(uiduck, false);
         }
-
     },
     render: function (uiduck, refresh) {
         $("#" + uiduck.templateId).empty();
-
         var c = '';
-
         if (uiduck.style.tbClass) {
             c += '<table id=' + uiduck.udKey + ' class="' + uiduck.style.tbClass + '">';
         } else {
@@ -308,7 +302,6 @@ uiduck = {
             } else {
                 g += "<th class='" + uiduck.style.thClass + "' style='font-weight:blod'>" + uiduck.fieldOptions[i].title + "</th>"
             }
-
         }
         if (uiduck.rightTool) {
             if (uiduck.rightTool.width != undefined) {
@@ -367,7 +360,6 @@ uiduck = {
                     }
                     uiduckJL = uiduck.data;
                 }
-
                 if (uiduckJL == undefined || uiduckJL.length == 0) {
                     h += "<tr  id=ud-tr-" + i + " ud-tr-num=" + i + " class='uiduck_tr " + e.style.trClass + "' style='visibility:hidden'>";
                     if (e.rightTool) {
@@ -528,28 +520,6 @@ uiduck = {
         var index = $(e).parent().attr("ud-index");
         return uiduck.data[index];
     },
-    returnList: function (j) {
-        var h = new Array();
-        for (var f in j) {
-            var i = "";
-            for (var g in j[f]) {
-                i += j[f][g] + "_"
-            }
-            i = i.substring(0, i.length - 1);
-            h.push(i)
-        }
-        return h
-    },
-    returnTable: function (e) {
-        var h = e.split("_");
-        var g = "<tr>";
-        for (var f in h) {
-            g += "<td>" + h[f] + "</td>"
-        }
-        g += "</tr>";
-        return g
-    },
-
     setPage: function (e) {
         var options = e.pageOptions;
         var g = '<div   class="uiduck-page noselect" >';
