@@ -12,12 +12,13 @@
 </head>
 
 <body>
-	<div style="width: 80%;padding: 0 10%;">
+	<div style="width: 80%;padding: 0 10%;padding-bottom: 200px;">
 		<div style="padding-top: 3%;padding-bottom: 2%;">
 			<h1 class="" style="font-size:72px;">uiduck </h1>
 			<h1 class="">前端表格插件，功能强大，支持前后端分页，模板语法，可接入三方UI库。</h1>
 		</div>
 		<div style="padding-bottom: 2%;">
+			<button class="uiduck-btn-normal" onClick=viewDocument();>使用文档</button>
 			<button class="uiduck-btn-normal" onClick=netData();>网络数据</button>
 			<button class="uiduck-btn-normal" onClick=localData();>本地数据</button>
 			<button class="uiduck-btn-normal"" onClick=changeTheme();>随机切换主题</button>
@@ -803,6 +804,9 @@
 	}
 	function newVersion() {
 		window.location.href = "https://github.com/nicez2/uiduck";
+	}
+	function viewDocument() {
+		window.location.href = "document.html";
 	}
 </script>
 
