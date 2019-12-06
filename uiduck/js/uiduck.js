@@ -21,7 +21,7 @@ uiduck = {
     loading: { icon: "loading", shade: false, shadeColor: "white" },
     language: { tag: "Chinese", options: [] },
     page: true,
-    pageOptions: { style: "", limit: "", dataType: "back", limits: ['10', '20', '30', '40', '50'], layout: ["total", "home", "prev", "next", "last", "set", "jump"], index: 0, count: 0 },
+    pageOptions: { style: "", limit: "", dataType: "back", limits: ['5', '10', '15', '20', '25', '30'], layout: ["total", "home", "prev", "next", "last", "set", "jump"], index: 0, count: 0 },
     fieldOptions: [],
     udKey: 'uiduck_' + (new Date()).valueOf(),
     setOptions: function (b) {
@@ -107,7 +107,7 @@ uiduck = {
             uiduck.pageOptions.layout = b.pageOptions.layout;
         }
         if (b.pageOptions.limits == undefined) {
-            uiduck.pageOptions.limits = ["10", "15", "20", "25"];
+            uiduck.pageOptions.limits = ['5', '10', '15', '20', '25', '30'];
         } else {
             uiduck.pageOptions.limits = b.pageOptions.limits;
         }
