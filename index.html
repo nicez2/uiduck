@@ -23,7 +23,7 @@
 			<button class="uiduck-btn-normal"" onClick=changeTheme();>随机切换主题</button>
 			<button class=" uiduck-btn-normal" onClick=changeLoading();>随机切换加载动画</button>
 			<button class="uiduck-btn-normal" onClick=changeShade();>遮罩层</button>
-			<button class="uiduck-btn-normal" onClick=changeBlur();>动态模糊</button>
+			<button class="uiduck-btn-normal" onClick=changeBlur();>背景模糊</button>
 			<button class="uiduck-btn-normal" onClick=simplePage();>简洁分页</button>
 			<button class="uiduck-btn-normal" onClick=fullPage();>完整分页</button>
 			<button class="uiduck-btn-normal" onClick=highlight();>关键词高亮</button>
@@ -54,7 +54,7 @@
 		url: { url: "http://data.live.126.net/livechannel/sub/3.json", type: "POST", key: "sublives" },
 		loading: { icon: "uiduck-loading-6" },
 		page: true,
-		pageOptions: {  limit: 5, limits: ['5', '10', '15', '20', '25'] },
+		pageOptions: { limit: 5, limits: ['5', '10', '15', '20', '25'] },
 		fieldOptions: [
 			{
 				index: true,
@@ -155,7 +155,7 @@
 		uiduck.setOptions({
 			templateId: "table",
 			url: { url: "http://data.live.126.net/livechannel/sub/3.json", type: "POST", key: "sublives" },
-			style: {  tbClass: "uiduck-table" },
+			style: { tbClass: "uiduck-table" },
 			loading: { icon: loading, time: 1000 },
 			page: true,
 			fieldOptions: [
@@ -300,7 +300,7 @@
 			templateId: "table",
 			url: { url: "http://data.live.126.net/livechannel/sub/3.json", type: "POST", key: "sublives" },
 			style: { tbClass: "uiduck-table" },
-			loading: { icon: "uiduck-loading-6",  time: 1000 },
+			loading: { icon: "uiduck-loading-6", blur: 4, time: 1000 },
 			page: true,
 			fieldOptions: [
 				{
@@ -346,7 +346,7 @@
 		uiduck.setOptions({
 			templateId: "table",
 			url: { url: "http://data.live.126.net/livechannel/sub/3.json", type: "POST", key: "sublives" },
-			loading: { icon: "uiduck-loading-6",  time: 1000 },
+			loading: { icon: "uiduck-loading-6", time: 1000 },
 			page: true,
 			pageOptions: { layout: ["total", , "prev", "next", "last"] },
 			fieldOptions: [
@@ -393,7 +393,7 @@
 		uiduck.setOptions({
 			templateId: "table",
 			url: { url: "http://data.live.126.net/livechannel/sub/3.json", type: "POST", key: "sublives" },
-			style: {  tbClass: "uiduck-table" },
+			style: { tbClass: "uiduck-table" },
 			loading: { icon: "uiduck-loading-6", time: 1000 },
 			page: true,
 			pageOptions: { limit: 5, limits: ['5', '10', '15', '20', '25'], layout: ["total", "home", "prev", "next", "last", "set", "jump"], dataType: "front" },
@@ -442,9 +442,9 @@
 		uiduck.setOptions({
 			templateId: "table",
 			url: { url: "http://data.live.126.net/livechannel/sub/3.json", type: "POST", key: "sublives" },
-			style: {  tbClass: "uiduck-table" },
+			style: { tbClass: "uiduck-table" },
 			rightTool: { templateId: "barDemo", title: "操作", width: "100px" },
-			loading: { icon: "uiduck-loading-6",  time: 1000 },
+			loading: { icon: "uiduck-loading-6", time: 1000 },
 			page: true,
 			fieldOptions: [
 				{
@@ -493,7 +493,7 @@
 			style: { tbClass: "uiduck-table" },
 			topBar: { templateId: "search", kwLight: true },
 			rightTool: { templateId: "barDemo", title: "操作", width: "100px" },
-			loading: { icon: "uiduck-loading-6",  time: 1000 },
+			loading: { icon: "uiduck-loading-6", time: 1000 },
 			page: true,
 			fieldOptions: [
 				{
@@ -627,7 +627,7 @@
 		uiduck.setOptions({
 			templateId: "table",
 			url: { url: "http://data.live.126.net/livechannel/sub/3.json", type: "POST", key: "sublives" },
-			style: {tbClass: "uiduck-table" },
+			style: { tbClass: "uiduck-table" },
 			autoNext: { time: 4000 },
 			loading: { icon: "uiduck-loading-6", blur: 1, time: 1000 },
 			page: true,
