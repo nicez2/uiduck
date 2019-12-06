@@ -13,7 +13,7 @@
 - 在代码中引用上述文件
 ````
 <link href="css/uiduck.css" type="text/css" rel="stylesheet">
-<link href="css/uiduck-extend-theme.css" type="text/css" rel="stylesheet">
+<link href="css/uiduck-table.css" type="text/css" rel="stylesheet">
 <script language="Javascript" src="js/uiduck.js"></script">
 ````
 - 在代码中创建表格的DIV容器，并设置ID属性
