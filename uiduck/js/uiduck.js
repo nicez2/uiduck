@@ -111,10 +111,10 @@ uiduck = {
         } else {
             uiduck.pageOptions.limits = b.pageOptions.limits;
         }
-        if (b.pageOptions.class == undefined) {
-            uiduck.pageOptions.class = "uiduck-page-its";
+        if (b.pageOptions.pageClass == undefined) {
+            uiduck.pageOptions.pageClass = "uiduck-page-its";
         } else {
-            uiduck.pageOptions.class = b.pageOptions.class;
+            uiduck.pageOptions.pageClass = b.pageOptions.pageClass;
         }
         if (b.pageOptions.emClass == undefined) {
             uiduck.pageOptions.emClass = 'uiduck-page-em';
@@ -551,7 +551,7 @@ uiduck = {
                             g += '<a  onclick="uiduck.expandPage(' + parseInt(parseInt(e.pageOptions.index) - 4) + ',0)">...</a>';
                         } else {
                             if (parseInt(e.pageOptions.index) == i) {
-                                g += ' <span class="' + e.pageOptions.class + '"><em class="' + e.pageOptions.emClass + '"></em><em>' + parseInt(i + 1) + '</em></span>';
+                                g += ' <span class="' + e.pageOptions.pageClass + '"><em class="' + e.pageOptions.emClass + '"></em><em>' + parseInt(i + 1) + '</em></span>';
                             } else {
                                 g += '<a  onclick="uiduck.skipPage(' + i + ')">' + parseInt(i + 1) + '</a>';
                             }
@@ -565,7 +565,7 @@ uiduck = {
                             } else {
                                 if (parseInt(e.pageOptions.index) == i) {
 
-                                    g += ' <span class="' + e.pageOptions.class + '"><em class="' + e.pageOptions.emClass + '"></em><em>' + parseInt(i + 1) + '</em></span>';
+                                    g += ' <span class="' + e.pageOptions.pageClass + '"><em class="' + e.pageOptions.emClass + '"></em><em>' + parseInt(i + 1) + '</em></span>';
                                 } else {
                                     g += '<a  onclick="uiduck.skipPage(' + i + ')">' + parseInt(i + 1) + '</a>';
                                 }
@@ -574,7 +574,7 @@ uiduck = {
                         }
                     } else if (i == 0) {
                         if (parseInt(e.pageOptions.index) == i) {
-                            g += ' <span class="' + e.pageOptions.class + '"><em class="' + e.pageOptions.emClass + '"></em><em>' + parseInt(i + 1) + '</em></span>';
+                            g += ' <span class="' + e.pageOptions.pageClass + '"><em class="' + e.pageOptions.emClass + '"></em><em>' + parseInt(i + 1) + '</em></span>';
                         } else {
                             g += '<a  onclick="uiduck.skipPage(' + i + ')">' + parseInt(i + 1) + '</a>';
                         }
@@ -588,7 +588,7 @@ uiduck = {
                                         g += '<a  onclick="uiduck.expandPage(' + i + ',1)">...</a>';
                                     } else {
                                         if (parseInt(e.pageOptions.index) == i) {
-                                            g += ' <span class="' + e.pageOptions.class + '"><em class="' + e.pageOptions.emClass + '"></em><em>' + parseInt(i + 1) + '</em></span>';
+                                            g += ' <span class="' + e.pageOptions.pageClass + '"><em class="' + e.pageOptions.emClass + '"></em><em>' + parseInt(i + 1) + '</em></span>';
                                         } else {
                                             g += '<a  onclick="uiduck.skipPage(' + i + ')">' + parseInt(i + 1) + '</a>';
                                         }
@@ -604,7 +604,7 @@ uiduck = {
                                 }
                             } else if (parseInt(parseInt(e.pageOptions.index) - 3) < i && i < parseInt(parseInt(e.pageOptions.index) + 3)) {
                                 if (parseInt(e.pageOptions.index) == i) {
-                                    g += ' <span class="' + e.pageOptions.class + '"><em class="' + e.pageOptions.emClass + '"></em><em>' + parseInt(i + 1) + '</em></span>';
+                                    g += ' <span class="' + e.pageOptions.pageClass + '"><em class="' + e.pageOptions.emClass + '"></em><em>' + parseInt(i + 1) + '</em></span>';
                                 } else {
                                     g += '<a  onclick="uiduck.skipPage(' + i + ')">' + parseInt(i + 1) + '</a>';
                                 }
@@ -613,21 +613,21 @@ uiduck = {
 
                     } else if (i == count) {
                         if (parseInt(e.pageOptions.index) == i) {
-                            g += ' <span class="' + e.pageOptions.class + '"><em class="' + e.pageOptions.emClass + '"></em><em>' + parseInt(i + 1) + '</em></span>';
+                            g += ' <span class="' + e.pageOptions.pageClass + '"><em class="' + e.pageOptions.emClass + '"></em><em>' + parseInt(i + 1) + '</em></span>';
                         } else {
                             g += '<a  onclick="uiduck.skipPage(' + i + ')">' + parseInt(i + 1) + '</a>';
                         }
                     } else if (1 < i < 7) {
                         if (parseInt(e.pageOptions.index) <= 4) {
                             if (parseInt(e.pageOptions.index) == i) {
-                                g += ' <span class="' + e.pageOptions.class + '"><em class="' + e.pageOptions.emClass + '"></em><em>' + parseInt(i + 1) + '</em></span>';
+                                g += ' <span class="' + e.pageOptions.pageClass + '"><em class="' + e.pageOptions.emClass + '"></em><em>' + parseInt(i + 1) + '</em></span>';
                             } else {
                                 g += '<a  onclick="uiduck.skipPage(' + i + ')">' + parseInt(i + 1) + '</a>';
                             }
                         } else if (parseInt(e.pageOptions.index) > 4) {
                             if (i > parseInt(parseInt(e.pageOptions.index) - 3)) {
                                 if (parseInt(e.pageOptions.index) == i) {
-                                    g += ' <span class="' + e.pageOptions.class + '"><em class="' + e.pageOptions.emClass + '"></em><em>' + parseInt(i + 1) + '</em></span>';
+                                    g += ' <span class="' + e.pageOptions.pageClass + '"><em class="' + e.pageOptions.emClass + '"></em><em>' + parseInt(i + 1) + '</em></span>';
                                 } else {
                                     g += '<a  onclick="uiduck.skipPage(' + i + ')">' + parseInt(i + 1) + '</a>';
                                 }
@@ -637,7 +637,7 @@ uiduck = {
                     }
                 } else {
                     if (parseInt(e.pageOptions.index) == i) {
-                        g += ' <span class="' + e.pageOptions.class + '"><em class="' + e.pageOptions.emClass + '"></em><em>' + parseInt(i + 1) + '</em></span>';
+                        g += ' <span class="' + e.pageOptions.pageClass + '"><em class="' + e.pageOptions.emClass + '"></em><em>' + parseInt(i + 1) + '</em></span>';
                     } else {
                         g += '<a  onclick="uiduck.skipPage(' + i + ')">' + parseInt(i + 1) + '</a>';
                     }
@@ -701,7 +701,7 @@ uiduck = {
             }
             for (var i = 0; i < count; i++) {
                 if (parseInt(e.pageOptions.index) == i) {
-                    g += ' <span  class="' + e.pageOptions.class + '"><em class="' + e.pageOptions.emClass + '"></em><em>' + parseInt(i + 1) + '</em></span>';
+                    g += ' <span  class="' + e.pageOptions.pageClass + '"><em class="' + e.pageOptions.emClass + '"></em><em>' + parseInt(i + 1) + '</em></span>';
                 } else {
                     g += '<a  onclick="uiduck.skipPage(' + i + ')">' + parseInt(i + 1) + '</a>';
                 }
