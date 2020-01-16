@@ -524,11 +524,18 @@ uiduck = {
         var options = e.pageOptions;
         var g = '<div   class="uiduck-page noselect" >';
         if (options.limit != undefined) {
-            var count = parseInt(e.data.length / options.limit);
-            if (e.data.length % options.limit > 0) {
-                count += 1;
+            if (e.pageOptions.dataType == 'front') {
+                var count = parseInt(e.data.length / options.limit);
+                if (e.data.length % options.limit > 0) {
+                    count += 1;
+                }
+                uiduck.pageOptions.count = count;
+            } else if (e.pageOptions.dataType == 'back') {
+                var count = parseInt(e.pageOptions.count / options.limit);
+                if (count % options.limit > 0) {
+                    count += 1;
+                }
             }
-            uiduck.pageOptions.count = count;
             if (e.pageOptions.index > 0) {
                 if (e.pageOptions.layout.indexOf('home') != -1) {
                     g += '<a onclick="uiduck.firstPage();" >' + e.language.options.udHome + '</a>';
