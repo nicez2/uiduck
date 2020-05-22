@@ -1,0 +1,817 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>uiduck demo</title>
+	<meta name="renderer" content="webkit">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<link href="uiduck/css/uiduck.css" type="text/css" rel="stylesheet">
+	<link href="uiduck/css/table.css" type="text/css" rel="stylesheet">
+</head>
+
+<body>
+	<div style="width: 80%;padding: 0 10%;padding-bottom: 200px;">
+		<div style="padding-top: 3%;padding-bottom: 2%;">
+			<h1 class="" style="font-size:72px;">uiduck </h1>
+			<h1 class="">前端表格插件，功能强大，支持前后端分页，模板语法，可接入三方UI库。</h1>
+		</div>
+		<div style="padding-bottom: 2%;">
+			<button class="uiduck-btn-normal" onClick=viewDemo();>返回</button>
+			<button class="uiduck-btn-normal" onClick=netData();>网络数据</button>
+			<button class="uiduck-btn-normal" onClick=localData();>本地数据</button>
+			<button class="uiduck-btn-normal"" onClick=changeTheme();>随机切换主题</button>
+			<button class=" uiduck-btn-normal" onClick=changeLoading();>随机切换加载动画</button>
+			<button class="uiduck-btn-normal" onClick=changeShade();>遮罩层</button>
+			<button class="uiduck-btn-normal" onClick=changeBlur();>背景模糊</button>
+			<button class="uiduck-btn-normal" onClick=simplePage();>简洁分页</button>
+			<button class="uiduck-btn-normal" onClick=fullPage();>完整分页</button>
+			<button class="uiduck-btn-normal" onClick=highlight();>关键词高亮</button>
+			<button class="uiduck-btn-normal" onClick=changeLanguage();>多语言随机切换</button>
+			<button class="uiduck-btn-normal" onClick=autoNext();>自动翻页</button>
+			<button class="uiduck-btn-normal" onClick=newVersion();>获取最新版本</button>
+		</div>
+
+		<!--以下为两个必须div元素-->
+		<script type="text/html" id="barDemo">
+			<button class="uiduck-btn" onClick=getRow(this);>获取此行数据</button>
+		</script>
+		<div id="ud-top" style="display: none;">
+			<h3>当前设置为微信字段，通过ud-keyWord属性指定相关列的key</h3>
+			<input id="search" ud-keyWord="wechat" class="uiduck-input" /><button class="uiduck-btn"
+				onClick=setData();>搜索</button>
+		</div>
+
+		<div id="table"></div>
+	</div>
+</body>
+<script language="Javascript" src="uiduck/js/jquery.min.js"></script>
+<script language="Javascript" src="uiduck/js/json2.js"></script>
+<script language="Javascript" src="uiduck/js/uiduck.js"></script>
+<script LANGUAGE="javascript">
+	uiduck.setOptions({
+		templateId: "table",
+		url: { url: "http://data.live.126.net/livechannel/sub/3.json", type: "POST", key: "sublives" },
+		loading: { icon: "uiduck-loading-6" },
+		page: true,
+		pageOptions: { limit: 5, limits: ['5', '10', '15', '20', '25'] },
+		fieldOptions: [
+			{
+				index: true,
+				title: "序号"
+			},
+			{
+				key: "cid",
+				title: "ID"
+			}, {
+				key: "cname",
+				title: "类型"
+			}, {
+				key: "collectionId",
+				title: "测试",
+				type: "map",
+				computed: {
+					"0": "李白",
+					"1": "杜甫",
+					"2": "白居易",
+					"3": "王安石"
+				}
+			}, {
+				key: "icon",
+				title: "图标",
+				type: "image",
+				width: "30px",
+				height: "30px"
+			}, {
+				key: "ename",
+				title: "名称"
+			},
+			{
+				key: "tid",
+				title: "TID"
+			}, {
+				key: "tname",
+				title: "节目名称"
+			}]
+	});
+	function getRow(e) {
+		alert(JSON.stringify(uiduck.getRow(e)))
+	}
+	function changeTheme(e) {
+		$("#ud-top").css('display', 'none');
+		var arr = ["uiduck-table", "uiduck-dark", "uiduck-led", "uiduck-pink", "uiduck-coffee", "uiduck-blue", "uiduck-purple", "uiduck-white"];
+		var theme = arr[Math.floor((Math.random() * arr.length))];
+		uiduck.setOptions({
+			templateId: "table",
+			url: { url: "http://data.live.126.net/livechannel/sub/3.json", type: "POST", key: "sublives" },
+			style: { tbClass: theme },
+			rightTool: { templateId: "barDemo", title: "操作", width: "100px" },
+			loading: { icon: "uiduck-loading-6" },
+			page: true,
+			fieldOptions: [
+				{
+					index: true,
+					title: "序号"
+				},
+				{
+					key: "cid",
+					title: "ID"
+				}, {
+					key: "cname",
+					title: "类型"
+				}, {
+					key: "collectionId",
+					title: "测试",
+					type: "map",
+					computed: {
+						"0": "李白",
+						"1": "杜甫",
+						"2": "白居易",
+						"3": "王安石"
+					}
+				},
+				{
+					key: "icon",
+					title: "图标",
+					type: "image",
+					width: "30px",
+					height: "30px"
+				}, {
+					key: "ename",
+					title: "名称"
+				}, {
+					key: "tid",
+					title: "TID"
+				}, {
+					key: "tname",
+					title: "节目名称"
+				}]
+		});
+	}
+	function changeLoading(e) {
+		$("#ud-top").css('display', 'none');
+		var arr = ["uiduck-loading-1", "uiduck-loading-2", "uiduck-loading-3", "uiduck-loading-4", "uiduck-loading-5", "uiduck-loading-6", "uiduck-loading-7", "uiduck-loading-8", "uiduck-loading-9", "uiduck-loading-10", "uiduck-loading-11"];
+		var loading = arr[Math.floor((Math.random() * arr.length))];
+		uiduck.setOptions({
+			templateId: "table",
+			url: { url: "http://data.live.126.net/livechannel/sub/3.json", type: "POST", key: "sublives" },
+			style: { tbClass: "uiduck-table" },
+			loading: { icon: loading, time: 1000 },
+			page: true,
+			fieldOptions: [
+				{
+					index: true,
+					title: "序号"
+				},
+				{
+					key: "cid",
+					title: "ID"
+				}, {
+					key: "cname",
+					title: "类型"
+				}, {
+					key: "collectionId",
+					title: "测试",
+					type: "map",
+					computed: {
+						"0": "李白",
+						"1": "杜甫",
+						"2": "白居易",
+						"3": "王安石"
+					}
+				}, {
+					key: "ename",
+					title: "名称"
+				}, {
+					key: "icon",
+					title: "图标",
+					type: "image",
+					width: "30px",
+					height: "30px"
+				}, {
+					key: "tid",
+					title: "TID"
+				}, {
+					key: "tname",
+					title: "节目名称"
+				}]
+		});
+	}
+	function changeShade(e) {
+		$("#ud-top").css('display', 'none');
+		uiduck.setOptions({
+			templateId: "table",
+			url: { url: "http://data.live.126.net/livechannel/sub/3.json", type: "POST", key: "sublives" },
+			style: { tbClass: "uiduck-table" },
+			loading: { icon: "uiduck-loading-6", shade: 0.3, shadeColor: "black", time: 1000 },
+			page: true,
+			fieldOptions: [
+				{
+					index: true,
+					title: "序号"
+				},
+				{
+					key: "cid",
+					title: "ID"
+				}, {
+					key: "cname",
+					title: "类型"
+				}, {
+					key: "collectionId",
+					title: "测试",
+					type: "map",
+					computed: {
+						"0": "李白",
+						"1": "杜甫",
+						"2": "白居易",
+						"3": "王安石"
+					}
+				}, {
+					key: "ename",
+					title: "名称"
+				}, {
+					key: "icon",
+					title: "图标",
+					type: "image",
+					width: "30px",
+					height: "30px"
+				}, {
+					key: "tid",
+					title: "TID"
+				}, {
+					key: "tname",
+					title: "节目名称"
+				}]
+		});
+	}
+	function changeLanguage(e) {
+		$("#ud-top").css('display', 'none');
+		var arr = ["Chinese", "English", "Japanese", "French", "Korean", "Spanish"];
+		var tag = arr[Math.floor((Math.random() * arr.length))];
+		uiduck.setOptions({
+			templateId: "table",
+			url: { url: "http://data.live.126.net/livechannel/sub/3.json", type: "POST", key: "sublives" },
+			style: { tbClass: "uiduck-table" },
+			language: { tag: tag },
+			loading: { icon: "uiduck-loading-6", time: 1000 },
+			page: true,
+			fieldOptions: [
+				{
+					index: true,
+					title: "序号"
+				},
+				{
+					key: "cid",
+					title: "ID"
+				}, {
+					key: "cname",
+					title: "类型"
+				}, {
+					key: "collectionId",
+					title: "测试",
+					type: "map",
+					computed: {
+						"0": "李白",
+						"1": "杜甫",
+						"2": "白居易",
+						"3": "王安石"
+					}
+				}, {
+					key: "icon",
+					title: "图标",
+					type: "image",
+					width: "30px",
+					height: "30px"
+				}, {
+					key: "ename",
+					title: "名称"
+				}, {
+					key: "tid",
+					title: "TID"
+				}, {
+					key: "tname",
+					title: "节目名称"
+				}]
+		});
+	}
+	function changeBlur(e) {
+		$("#ud-top").css('display', 'none');
+		uiduck.setOptions({
+			templateId: "table",
+			url: { url: "http://data.live.126.net/livechannel/sub/3.json", type: "POST", key: "sublives" },
+			style: { tbClass: "uiduck-table" },
+			loading: { icon: "uiduck-loading-6", blur: 4, time: 1000 },
+			page: true,
+			fieldOptions: [
+				{
+					index: true,
+					title: "序号"
+				},
+				{
+					key: "cid",
+					title: "ID"
+				}, {
+					key: "cname",
+					title: "类型"
+				}, {
+					key: "collectionId",
+					title: "测试",
+					type: "map",
+					computed: {
+						"0": "李白",
+						"1": "杜甫",
+						"2": "白居易",
+						"3": "王安石"
+					}
+				}, {
+					key: "icon",
+					title: "图标",
+					type: "image",
+					width: "30px",
+					height: "30px"
+				}, {
+					key: "ename",
+					title: "名称"
+				}, {
+					key: "tid",
+					title: "TID"
+				}, {
+					key: "tname",
+					title: "节目名称"
+				}]
+		});
+	}
+	function simplePage(e) {
+		$("#ud-top").css('display', 'none');
+		uiduck.setOptions({
+			templateId: "table",
+			url: { url: "http://data.live.126.net/livechannel/sub/3.json", type: "POST", key: "sublives" },
+			loading: { icon: "uiduck-loading-6", time: 1000 },
+			page: true,
+			pageOptions: { layout: ["total", , "prev", "next", "last"] },
+			fieldOptions: [
+				{
+					index: true,
+					title: "序号"
+				},
+				{
+					key: "cid",
+					title: "ID"
+				}, {
+					key: "cname",
+					title: "类型"
+				}, {
+					key: "collectionId",
+					title: "测试",
+					type: "map",
+					computed: {
+						"0": "李白",
+						"1": "杜甫",
+						"2": "白居易",
+						"3": "王安石"
+					}
+				}, {
+					key: "ename",
+					title: "名称"
+				}, {
+					key: "icon",
+					title: "图标",
+					type: "image",
+					width: "30px",
+					height: "30px"
+				}, {
+					key: "tid",
+					title: "TID"
+				}, {
+					key: "tname",
+					title: "节目名称"
+				}]
+		});
+	}
+	function fullPage(e) {
+		$("#ud-top").css('display', 'none');
+		uiduck.setOptions({
+			templateId: "table",
+			url: { url: "http://data.live.126.net/livechannel/sub/3.json", type: "POST", key: "sublives" },
+			style: { tbClass: "uiduck-table" },
+			loading: { icon: "uiduck-loading-6", time: 1000 },
+			page: true,
+			pageOptions: { limit: 5, limits: ['5', '10', '15', '20', '25'], layout: ["total", "home", "prev", "next", "last", "set", "jump"], dataType: "front" },
+			fieldOptions: [
+				{
+					index: true,
+					title: "序号"
+				},
+				{
+					key: "cid",
+					title: "ID"
+				}, {
+					key: "cname",
+					title: "类型"
+				}, {
+					key: "collectionId",
+					title: "测试",
+					type: "map",
+					computed: {
+						"0": "李白",
+						"1": "杜甫",
+						"2": "白居易",
+						"3": "王安石"
+					}
+				}, {
+					key: "ename",
+					title: "名称"
+				}, {
+					key: "icon",
+					title: "图标",
+					type: "image",
+					width: "30px",
+					height: "30px"
+				}, {
+					key: "tid",
+					title: "TID"
+				}, {
+					key: "tname",
+					title: "节目名称"
+				}]
+		});
+	}
+
+	function netData(e) {
+		$("#ud-top").css('display', 'none');
+		uiduck.setOptions({
+			templateId: "table",
+			url: { url: "http://data.live.126.net/livechannel/sub/3.json", type: "POST", key: "sublives" },
+			style: { tbClass: "uiduck-table" },
+			rightTool: { templateId: "barDemo", title: "操作", width: "100px" },
+			loading: { icon: "uiduck-loading-6", time: 1000 },
+			page: true,
+			fieldOptions: [
+				{
+					index: true,
+					title: "序号"
+				},
+				{
+					key: "cid",
+					title: "ID"
+				}, {
+					key: "cname",
+					title: "类型"
+				}, {
+					key: "collectionId",
+					title: "测试",
+					type: "map",
+					computed: {
+						"0": "李白",
+						"1": "杜甫",
+						"2": "白居易",
+						"3": "王安石"
+					}
+				}, {
+					key: "ename",
+					title: "名称"
+				}, {
+					key: "icon",
+					title: "图标",
+					type: "image",
+					width: "30px",
+					height: "30px"
+				}, {
+					key: "tid",
+					title: "TID"
+				}, {
+					key: "tname",
+					title: "节目名称"
+				}]
+		});
+	}
+
+	function localData(e) {
+		$("#ud-top").css('display', 'none');
+		uiduck.setOptions({
+			templateId: "table",
+			style: { tbClass: "uiduck-table" },
+			topBar: { templateId: "search", kwLight: true },
+			rightTool: { templateId: "barDemo", title: "操作", width: "100px" },
+			loading: { icon: "uiduck-loading-6", time: 1000 },
+			page: true,
+			fieldOptions: [
+				{
+					index: true,
+					title: "序号"
+				},
+				{
+					key: "icon",
+					title: "头像",
+					type: "image",
+					width: "50px",
+					height: "50px"
+				}, {
+					key: "name",
+					title: "作者名称"
+				}, {
+					key: "emil",
+					title: "邮箱"
+				}, {
+					key: "wechat",
+					title: "微信"
+				}, {
+					key: "age",
+					title: "年龄"
+				}, {
+					key: "sex",
+					title: "年龄",
+					type: "map",
+					computed: {
+						"0": "女",
+						"1": "男"
+					}
+				}, {
+					key: "school",
+					title: "学校",
+					type: "map",
+					computed: {
+						"0": "家里跳",
+						"1": "家里躺",
+						"2": "家里蹲"
+					}
+				}, {
+					key: "city",
+					title: "城市",
+					type: "map",
+					computed: {
+						"0": "杭州",
+						"1": "北京",
+						"2": "上海",
+						"3": "青岛"
+					}
+				}, {
+					key: "like",
+					title: "爱好",
+					type: "map",
+					computed: {
+						"0": "骑车",
+						"1": "游泳"
+					}
+				}]
+		});
+		var data = [{
+			"icon": "uiduck/assets/head.jpg",
+			"name": "nciezz",
+			"emil": "hzdz163@163.com",
+			"wechat": "wenxuejn",
+			"age": "24",
+			"sex": 1,
+			"school": 2,
+			"city": 3,
+			"like": 1
+		}, {
+			"icon": "uiduck/assets/head.jpg",
+			"name": "nciezz",
+			"emil": "hzdz163@163.com",
+			"wechat": "wenxuejn",
+			"age": "24",
+			"sex": 1,
+			"school": 1,
+			"city": 3,
+			"like": 1
+		}, {
+			"icon": "uiduck/assets/head.jpg",
+			"name": "nciezz",
+			"emil": "hzdz163@163.com",
+			"wechat": "wenxuejn",
+			"age": "24",
+			"sex": 1,
+			"school": 2,
+			"city": 3,
+			"like": 1
+		}, {
+			"icon": "uiduck/assets/head.jpg",
+			"name": "nciezz",
+			"emil": "hzdz163@163.com",
+			"wechat": "wenxuejn",
+			"age": "24",
+			"sex": 1,
+			"school": 2,
+			"city": 3,
+			"like": 1
+		}, {
+			"icon": "uiduck/assets/head.jpg",
+			"name": "nciezz",
+			"emil": "hzdz163@163.com",
+			"wechat": "wenxuejn",
+			"age": "24",
+			"sex": 1,
+			"school": 0,
+			"city": 3,
+			"like": 1
+		}, {
+			"icon": "uiduck/assets/head.jpg",
+			"name": "nciezz",
+			"emil": "hzdz163@163.com",
+			"wechat": "wenxuejn",
+			"age": "24",
+			"sex": 1,
+			"school": 2,
+			"city": 3,
+			"like": 1
+		}]
+		uiduck.setData(data, false);
+	}
+	function highlight() {
+		$("#ud-top").css('display', 'block');
+		setData();
+	}
+	function autoNext() {
+		$("#ud-top").css('display', 'none');
+		uiduck.setOptions({
+			templateId: "table",
+			url: { url: "http://data.live.126.net/livechannel/sub/3.json", type: "POST", key: "sublives" },
+			style: { tbClass: "uiduck-table" },
+			autoNext: { time: 4000 },
+			loading: { icon: "uiduck-loading-6", blur: 1, time: 1000 },
+			page: true,
+			fieldOptions: [
+				{
+					index: true,
+					title: "序号"
+				},
+				{
+					key: "cid",
+					title: "ID"
+				}, {
+					key: "cname",
+					title: "类型"
+				}, {
+					key: "collectionId",
+					title: "测试",
+					type: "map",
+					computed: {
+						"0": "李白",
+						"1": "杜甫",
+						"2": "白居易",
+						"3": "王安石"
+					}
+				}, {
+					key: "ename",
+					title: "名称"
+				}, {
+					key: "icon",
+					title: "图标",
+					type: "image",
+					width: "30px",
+					height: "30px"
+				}, {
+					key: "tid",
+					title: "TID"
+				}, {
+					key: "tname",
+					title: "节目名称"
+				}]
+		});
+	}
+	function setData() {
+		uiduck.setOptions({
+			templateId: "table",
+			style: { size: "mini", stripe: false, highlight: true, tbClass: "uiduck-table" },
+			topBar: { templateId: "search", kwLight: true },
+			rightTool: { templateId: "barDemo", title: "操作", width: "100px" },
+			loading: { icon: "uiduck-loading-6", time: 1000 },
+			page: true,
+			fieldOptions: [
+				{
+					index: true,
+					title: "序号"
+				},
+				{
+					key: "icon",
+					title: "头像",
+					type: "image",
+					width: "50px",
+					height: "50px"
+				}, {
+					key: "name",
+					title: "作者名称"
+				}, {
+					key: "emil",
+					title: "邮箱"
+				}, {
+					key: "wechat",
+					title: "微信"
+				}, {
+					key: "age",
+					title: "年龄"
+				}, {
+					key: "sex",
+					title: "年龄",
+					type: "map",
+					computed: {
+						"0": "女",
+						"1": "男"
+					}
+				}, {
+					key: "school",
+					title: "学校",
+					type: "map",
+					computed: {
+						"0": "家里跳",
+						"1": "家里躺",
+						"2": "家里蹲"
+					}
+				}, {
+					key: "city",
+					title: "城市",
+					type: "map",
+					computed: {
+						"0": "杭州",
+						"1": "北京",
+						"2": "上海",
+						"3": "青岛"
+					}
+				}, {
+					key: "like",
+					title: "爱好",
+					type: "map",
+					computed: {
+						"0": "骑车",
+						"1": "游泳"
+					}
+				}]
+		});
+		var data = [{
+			"icon": "uiduck/assets/head.jpg",
+			"name": "nciezz",
+			"emil": "hzdz163@163.com",
+			"wechat": "wenxuejn",
+			"age": "24",
+			"sex": 1,
+			"school": 2,
+			"city": 3,
+			"like": 1
+		}, {
+			"icon": "uiduck/assets/head.jpg",
+			"name": "nciezz",
+			"emil": "hzdz163@163.com",
+			"wechat": "wenxuejn",
+			"age": "24",
+			"sex": 1,
+			"school": 1,
+			"city": 3,
+			"like": 1
+		}, {
+			"icon": "uiduck/assets/head.jpg",
+			"name": "nciezz",
+			"emil": "hzdz163@163.com",
+			"wechat": "wenxuejn",
+			"age": "24",
+			"sex": 1,
+			"school": 2,
+			"city": 3,
+			"like": 1
+		}, {
+			"icon": "uiduck/assets/head.jpg",
+			"name": "nciezz",
+			"emil": "hzdz163@163.com",
+			"wechat": "wenxuejn",
+			"age": "24",
+			"sex": 1,
+			"school": 2,
+			"city": 3,
+			"like": 1
+		}, {
+			"icon": "uiduck/assets/head.jpg",
+			"name": "nciezz",
+			"emil": "hzdz163@163.com",
+			"wechat": "wenxuejn",
+			"age": "24",
+			"sex": 1,
+			"school": 0,
+			"city": 3,
+			"like": 1
+		}, {
+			"icon": "uiduck/assets/head.jpg",
+			"name": "nciezz",
+			"emil": "hzdz163@163.com",
+			"wechat": "wenxuejn",
+			"age": "24",
+			"sex": 1,
+			"school": 2,
+			"city": 3,
+			"like": 1
+		}]
+		uiduck.setData(data, false);
+	}
+	function newVersion() {
+		window.location.href = "https://github.com/nicez2/uiduck";
+	}
+	function viewDocument() {
+		window.location.href = "document.html";
+	}
+	function viewDemo() {
+		window.location.href = "index.html";
+	}
+	
+</script>
+
+</html>
