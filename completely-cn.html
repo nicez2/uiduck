@@ -15,16 +15,15 @@
 	<div style="width:60%;padding: 0 20%;padding-bottom: 200px;">
 		<div style="padding-top: 3%;padding-bottom: 2%;">
 			<h1 class="" style="font-size:100px;font-weight:900;color:#409EFF">uiduck </h1>
-			<h1 class="" style="font-size:24px;font-weight:500;color:#E6A23C">ront end table plug-in / powerful /
-				supporting front-end paging / template syntax / access to three-party UI Library
+			<h1 class="" style="font-size:24px;font-weight:500;color:#E6A23C">前端表格插件 / 功能强大 / 支持前后端分页 / 模板语法 / 可接入三方UI库
 			</h1>
 		</div>
 		<div style="padding-bottom: 2%;">
-			<button class="uiduck-btn-normal" onClick=viewDemo();>return </button>
-			<button class=" uiduck-btn-normal" onClick=changeLoading();>randomly switch loading animation</button>
-			<button class="uiduck-btn-normal" onClick=changeBlur();>background blur </button>
-			<button class="uiduck-btn-normal" onClick=changeLanguage();>multi language random switching</button>
-			<button class="uiduck-btn-normal" onClick=newVersion();>get the latest version</button>
+			<button class="uiduck-btn-normal" onClick=viewDemo();>返回</button>
+			<button class=" uiduck-btn-normal" onClick=changeLoading();>随机切换加载动画</button>
+			<button class="uiduck-btn-normal" onClick=changeBlur();>背景模糊</button>
+			<button class="uiduck-btn-normal" onClick=changeLanguage();>多语言随机切换</button>
+			<button class="uiduck-btn-normal" onClick=newVersion();>获取最新版本</button>
 		</div>
 
 
@@ -32,31 +31,30 @@
 
 		<!--以下为两个必须div元素-->
 		<script type="text/html" id="barDemo">
-			<button class="uiduck-btn" onClick=getRow(uiduck5,this);>get the data of this row</button>
+			<button class="uiduck-btn" onClick=getRow(uiduck5,this);>获取此行数据</button>
 		</script>
 		<h2 style="font-size:36px;margin:20px"></h2>
 		<div id="table"></div>
 		<HR>
-		<h2 style="font-size:36px;margin:20px"> Network data</h2>
+		<h2 style="font-size:36px;margin:20px">网络数据</h2>
 		<div id="table-net-data"></div>
 		<HR>
-		<h2 style="font-size:36px;margin:20px"> Local data</h2>
+		<h2 style="font-size:36px;margin:20px">本地数据</h2>
 		<div id="table-local-data"></div>
 		<HR>
-		<h2 style="font-size:36px;margin:20px">Simple paging</h2>
+		<h2 style="font-size:36px;margin:20px">简单分页</h2>
 		<div id="table-simple-page"></div>
 		<HR>
 		<h2 style="font-size:36px;margin:20px">English language</h2>
 		<div id="table-english"></div>
 		<HR>
-		<h2 style="font-size:36px;margin:20px"> Keyword highlight</h2>
-		<h3>Currently, it is set to wechat field, and the key of related column is specified through UD keyword
-			attribute</h3>
+		<h2 style="font-size:36px;margin:20px">关键词高亮</h2>
+		<h3>当前设置为微信字段，通过ud-keyWord属性指定相关列的key</h3>
 		<input id="search" ud-keyWord="wechat" class="uiduck-input" /><button class="uiduck-btn"
-			onClick=setData();>search </button>
+			onClick=setData();>搜索</button>
 		<div id="table-highlight"></div>
 		<HR>
-		<h2 style="font-size:36px;margin:20px">Auto flip</h2>
+		<h2 style="font-size:36px;margin:20px">自动翻页</h2>
 		<div id="table-auto-next"></div>
 	</div>
 </body>
@@ -74,66 +72,63 @@
 			limit: 5,
 			limits: ['5', '10', '15', '20', '25']
 		},
-		language: {
-			tag: 'English'
-		},
 		page: true,
 		fieldOptions: [{
 				index: true,
-				title: "index"
+				title: "序号"
 			},
 			{
 				key: "icon",
-				title: "icon",
+				title: "头像",
 				type: "image",
 				width: "20px",
 				height: "20px"
 			}, {
 				key: "name",
-				title: "name"
+				title: "作者名称"
 			}, {
 				key: "emil",
-				title: "emil"
+				title: "邮箱"
 			}, {
 				key: "wechat",
-				title: "wechat"
+				title: "微信"
 			}, {
 				key: "age",
-				title: "age"
+				title: "年龄"
 			}, {
 				key: "sex",
-				title: "sex",
+				title: "年龄",
 				type: "map",
 				computed: {
-					"0": "nv",
-					"1": "nan"
+					"0": "女",
+					"1": "男"
 				}
 			}, {
 				key: "school",
-				title: "school",
+				title: "学校",
 				type: "map",
 				computed: {
-					"0": "jj school",
-					"1": "aa school",
-					"2": "pp school"
+					"0": "家里跳",
+					"1": "家里躺",
+					"2": "家里蹲"
 				}
 			}, {
 				key: "city",
-				title: "city",
+				title: "城市",
 				type: "map",
 				computed: {
-					"0": "Hangzhou",
-					"1": "Beijing",
-					"2": "Shanghai",
-					"3": "Qingdao"
+					"0": "杭州",
+					"1": "北京",
+					"2": "上海",
+					"3": "青岛"
 				}
 			}, {
 				key: "like",
-				title: "like",
+				title: "爱好",
 				type: "map",
 				computed: {
-					"0": "bike",
-					"1": "swim"
+					"0": "骑车",
+					"1": "游泳"
 				}
 			}
 		]
@@ -147,9 +142,6 @@
 			url: "http://data.live.126.net/livechannel/sub/3.json",
 			type: "POST",
 			key: "sublives"
-		},
-		language: {
-			tag: 'English'
 		},
 		loading: {
 			icon: "uiduck-loading-6",
@@ -203,9 +195,6 @@
 		loading: {
 			icon: "uiduck-loading-6"
 		},
-		language: {
-			tag: 'English'
-		},
 		page: true,
 		pageOptions: {
 			limit: 5,
@@ -214,60 +203,60 @@
 		page: true,
 		fieldOptions: [{
 				index: true,
-				title: "index"
+				title: "序号"
 			},
 			{
 				key: "icon",
-				title: "icon",
+				title: "头像",
 				type: "image",
 				width: "20px",
 				height: "20px"
 			}, {
 				key: "name",
-				title: "name"
+				title: "作者名称"
 			}, {
 				key: "emil",
-				title: "emil"
+				title: "邮箱"
 			}, {
 				key: "wechat",
-				title: "wechat"
+				title: "微信"
 			}, {
 				key: "age",
-				title: "age"
+				title: "年龄"
 			}, {
 				key: "sex",
-				title: "sex",
+				title: "年龄",
 				type: "map",
 				computed: {
-					"0": "nv",
-					"1": "nan"
+					"0": "女",
+					"1": "男"
 				}
 			}, {
 				key: "school",
-				title: "school",
+				title: "学校",
 				type: "map",
 				computed: {
-					"0": "jj school",
-					"1": "aa school",
-					"2": "pp school"
+					"0": "家里跳",
+					"1": "家里躺",
+					"2": "家里蹲"
 				}
 			}, {
 				key: "city",
-				title: "city",
+				title: "城市",
 				type: "map",
 				computed: {
-					"0": "Hangzhou",
-					"1": "Beijing",
-					"2": "Shanghai",
-					"3": "Qingdao"
+					"0": "杭州",
+					"1": "北京",
+					"2": "上海",
+					"3": "青岛"
 				}
 			}, {
 				key: "like",
-				title: "like",
+				title: "爱好",
 				type: "map",
 				computed: {
-					"0": "bike",
-					"1": "swim"
+					"0": "骑车",
+					"1": "游泳"
 				}
 			}
 		]
@@ -343,9 +332,6 @@
 			url: "http://data.live.126.net/livechannel/sub/3.json",
 			type: "POST",
 			key: "sublives"
-		},
-		language: {
-			tag: 'English'
 		},
 		loading: {
 			icon: "uiduck-loading-6",
@@ -476,9 +462,6 @@
 
 	var uiduck5 = new uiduck('uiduck5', {
 		templateId: "table-highlight",
-		language: {
-			tag: 'English'
-		},
 		style: {
 			size: "mini",
 			stripe: false,
@@ -491,7 +474,7 @@
 		},
 		rightTool: {
 			templateId: "barDemo",
-			title: "operation",
+			title: "操作",
 			width: "100px"
 		},
 		loading: {
@@ -505,60 +488,60 @@
 		},
 		fieldOptions: [{
 				index: true,
-				title: "index"
+				title: "序号"
 			},
 			{
 				key: "icon",
-				title: "icon",
+				title: "头像",
 				type: "image",
 				width: "20px",
 				height: "20px"
 			}, {
 				key: "name",
-				title: "name"
+				title: "作者名称"
 			}, {
 				key: "emil",
-				title: "emil"
+				title: "邮箱"
 			}, {
 				key: "wechat",
-				title: "wechat"
+				title: "微信"
 			}, {
 				key: "age",
-				title: "age"
+				title: "年龄"
 			}, {
 				key: "sex",
-				title: "sex",
+				title: "年龄",
 				type: "map",
 				computed: {
-					"0": "nv",
-					"1": "nan"
+					"0": "女",
+					"1": "男"
 				}
 			}, {
 				key: "school",
-				title: "school",
+				title: "学校",
 				type: "map",
 				computed: {
-					"0": "jj school",
-					"1": "aa school",
-					"2": "pp school"
+					"0": "家里跳",
+					"1": "家里躺",
+					"2": "家里蹲"
 				}
 			}, {
 				key: "city",
-				title: "city",
+				title: "城市",
 				type: "map",
 				computed: {
-					"0": "Hangzhou",
-					"1": "Beijing",
-					"2": "Shanghai",
-					"3": "Qingdao"
+					"0": "杭州",
+					"1": "北京",
+					"2": "上海",
+					"3": "青岛"
 				}
 			}, {
 				key: "like",
-				title: "like",
+				title: "爱好",
 				type: "map",
 				computed: {
-					"0": "bike",
-					"1": "swim"
+					"0": "骑车",
+					"1": "游泳"
 				}
 			}
 		]
@@ -574,9 +557,6 @@
 		autoNext: {
 			time: 4000
 		},
-		language: {
-			tag: 'English'
-		},
 		loading: {
 			icon: "uiduck-loading-6",
 			blur: 1,
@@ -585,60 +565,60 @@
 		page: true,
 		fieldOptions: [{
 				index: true,
-				title: "index"
+				title: "序号"
 			},
 			{
 				key: "icon",
-				title: "icon",
+				title: "头像",
 				type: "image",
 				width: "20px",
 				height: "20px"
 			}, {
 				key: "name",
-				title: "name"
+				title: "作者名称"
 			}, {
 				key: "emil",
-				title: "emil"
+				title: "邮箱"
 			}, {
 				key: "wechat",
-				title: "wechat"
+				title: "微信"
 			}, {
 				key: "age",
-				title: "age"
+				title: "年龄"
 			}, {
 				key: "sex",
-				title: "sex",
+				title: "年龄",
 				type: "map",
 				computed: {
-					"0": "nv",
-					"1": "nan"
+					"0": "女",
+					"1": "男"
 				}
 			}, {
 				key: "school",
-				title: "school",
+				title: "学校",
 				type: "map",
 				computed: {
-					"0": "jj school",
-					"1": "aa school",
-					"2": "pp school"
+					"0": "家里跳",
+					"1": "家里躺",
+					"2": "家里蹲"
 				}
 			}, {
 				key: "city",
-				title: "city",
+				title: "城市",
 				type: "map",
 				computed: {
-					"0": "Hangzhou",
-					"1": "Beijing",
-					"2": "Shanghai",
-					"3": "Qingdao"
+					"0": "杭州",
+					"1": "北京",
+					"2": "上海",
+					"3": "青岛"
 				}
 			}, {
 				key: "like",
-				title: "like",
+				title: "爱好",
 				type: "map",
 				computed: {
-					"0": "bike",
-					"1": "swim"
+					"0": "骑车",
+					"1": "游泳"
 				}
 			}
 		]
@@ -649,6 +629,7 @@
 	function getRow(e,index) {
 		alert(JSON.stringify(e.getRow(index)))
 	}
+
 
 	function changeLoading(e) {
 		$("#ud-top").css('display', 'none');
@@ -667,9 +648,6 @@
 			loading: {
 				icon: loading,
 				time: 1000
-			},
-			language: {
-				tag: 'English'
 			},
 			page: true,
 			pageOptions: {
@@ -740,60 +718,60 @@
 			},
 			fieldOptions: [{
 					index: true,
-					title: "index"
+					title: "序号"
 				},
 				{
 					key: "icon",
-					title: "icon",
+					title: "头像",
 					type: "image",
 					width: "20px",
 					height: "20px"
 				}, {
 					key: "name",
-					title: "name"
+					title: "作者名称"
 				}, {
 					key: "emil",
-					title: "emil"
+					title: "邮箱"
 				}, {
 					key: "wechat",
-					title: "wechat"
+					title: "微信"
 				}, {
 					key: "age",
-					title: "age"
+					title: "年龄"
 				}, {
 					key: "sex",
-					title: "sex",
+					title: "年龄",
 					type: "map",
 					computed: {
-						"0": "nv",
-						"1": "nan"
+						"0": "女",
+						"1": "男"
 					}
 				}, {
 					key: "school",
-					title: "school",
+					title: "学校",
 					type: "map",
 					computed: {
-						"0": "jj school",
-						"1": "aa school",
-						"2": "pp school"
+						"0": "家里跳",
+						"1": "家里躺",
+						"2": "家里蹲"
 					}
 				}, {
 					key: "city",
-					title: "city",
+					title: "城市",
 					type: "map",
 					computed: {
-						"0": "Hangzhou",
-						"1": "Beijing",
-						"2": "Shanghai",
-						"3": "Qingdao"
+						"0": "杭州",
+						"1": "北京",
+						"2": "上海",
+						"3": "青岛"
 					}
 				}, {
 					key: "like",
-					title: "like",
+					title: "爱好",
 					type: "map",
 					computed: {
-						"0": "bike",
-						"1": "swim"
+						"0": "骑车",
+						"1": "游泳"
 					}
 				}
 			]
@@ -808,9 +786,6 @@
 				url: "http://data.live.126.net/livechannel/sub/3.json",
 				type: "POST",
 				key: "sublives"
-			},
-			language: {
-				tag: 'English'
 			},
 			loading: {
 				icon: "uiduck-loading-6",
@@ -875,16 +850,13 @@
 				highlight: true,
 				tbClass: "uiduck-table"
 			},
-			language: {
-				tag: 'English'
-			},
 			topBar: {
 				templateId: "search",
 				kwLight: true
 			},
 			rightTool: {
 				templateId: "barDemo",
-				title: "operation",
+				title: "操作",
 				width: "100px"
 			},
 			loading: {
@@ -894,60 +866,60 @@
 			page: true,
 			fieldOptions: [{
 					index: true,
-					title: "index"
+					title: "序号"
 				},
 				{
 					key: "icon",
-					title: "icon",
+					title: "头像",
 					type: "image",
-					width: "20px",
-					height: "20px"
+					width: "50px",
+					height: "50px"
 				}, {
 					key: "name",
-					title: "name"
+					title: "作者名称"
 				}, {
 					key: "emil",
-					title: "emil"
+					title: "邮箱"
 				}, {
 					key: "wechat",
-					title: "wechat"
+					title: "微信"
 				}, {
 					key: "age",
-					title: "age"
+					title: "年龄"
 				}, {
 					key: "sex",
-					title: "sex",
+					title: "年龄",
 					type: "map",
 					computed: {
-						"0": "nv",
-						"1": "nan"
+						"0": "女",
+						"1": "男"
 					}
 				}, {
 					key: "school",
-					title: "school",
+					title: "学校",
 					type: "map",
 					computed: {
-						"0": "jj school",
-						"1": "aa school",
-						"2": "pp school"
+						"0": "家里跳",
+						"1": "家里躺",
+						"2": "家里蹲"
 					}
 				}, {
 					key: "city",
-					title: "city",
+					title: "城市",
 					type: "map",
 					computed: {
-						"0": "Hangzhou",
-						"1": "Beijing",
-						"2": "Shanghai",
-						"3": "Qingdao"
+						"0": "杭州",
+						"1": "北京",
+						"2": "上海",
+						"3": "青岛"
 					}
 				}, {
 					key: "like",
-					title: "like",
+					title: "爱好",
 					type: "map",
 					computed: {
-						"0": "bike",
-						"1": "swim"
+						"0": "骑车",
+						"1": "游泳"
 					}
 				}
 			]
@@ -960,11 +932,11 @@
 	}
 
 	function viewDocument() {
-		window.location.href = "document.html";
+		window.location.href = "document-cn.html";
 	}
 
 	function viewDemo() {
-		window.location.href = "index.html";
+		window.location.href = "index-cn.html";
 	}
 </script>
 

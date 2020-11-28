@@ -1,24 +1,22 @@
 # uiduck
-### 前端表格插件，功能强大，支持前后端分页，模板语法，可接入三方UI库。<br>
-![](https://ftp.bmp.ovh/imgs/2019/12/7ae8cdfa99340008.png)
-
-* 1.Author：nicezz email:hzdz163@163.com<br>
-
-### 准备工作
-- uiduck依赖于JQuery
-- 在代码中引用上述文件
+### The front-end table plug-in is powerful, supports front-end and back-end pagination, template syntax, and can access the three-party UI library. <br>
+![]( https://ftp.bmp.ovh/imgs/2019/12/7ae8cdfa99340008.png )
+* 1.Author：nicezz  email:hzdz163@163.com <br>
+### Preparatory work
+- Uiduck relies on jQuery
+- Reference the above documents in the code
 ````
-<link href="css/uiduck.css" type="text/css" rel="stylesheet">
-<link href="css/table.css" type="text/css" rel="stylesheet">
-<script language="Javascript" src="js/uiduck.js"></script">
+<link href="css/ uiduck.css " type="text/css" rel="stylesheet">
+<link href="css/ table.css " type="text/css" rel="stylesheet">
+<script language="Javascript" src="js/ uiduck.js "></script">
 ````
-- 在代码中创建表格的DIV容器，并设置ID属性
+- Create a div container for the table in the code and set the ID attribute
 ````
 <div id="table"></div">
 ````
-### 使用说明
+### Instructions for use
 ````javascript
-var uiduck1 = new uiduck('uiduck1', {
+var hello = new uiduck('hello', {
 		templateId: "table",
 		url: {
 			url: "http://data.live.126.net/livechannel/sub/3.json",
@@ -35,23 +33,24 @@ var uiduck1 = new uiduck('uiduck1', {
 		},
 		fieldOptions: [{
 				index: true,
-				title: "序号"
+				title: "number"
 			},
 			{
 				key: "cid",
 				title: "ID"
 			}, {
 				key: "cname",
-				title: "类型"
+				title: "cname"
 			},
 			{
 				key: "tid",
 				title: "TID"
 			}, {
 				key: "tname",
-				title: "节目名称"
+				title: "				key: "tname",
+"
 			}
 		]
 	});
 ````
- * 本程序的版权遵循创作共用原则，你可以免费使用、修改、发布本程序，请注明原作者
+* The copyright of this program follows the principle of creative sharing. You can use, modify and release this program free of charge. Please indicate the original author

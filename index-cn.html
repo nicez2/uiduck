@@ -15,23 +15,22 @@
 	<div style="width:60%;padding: 0 20%;padding-bottom: 200px;">
 		<div style="padding-top: 3%;padding-bottom: 2%;">
 			<h1 class="" style="font-size:100px;font-weight:900;color:#409EFF">uiduck </h1>
-			<h1 class="" style="font-size:24px;font-weight:500;color:#E6A23C"> front end table plug-in / powerful /
-				supporting front-end paging / template syntax / access to three-party UI Library
+			<h1 class="" style="font-size:24px;font-weight:500;color:#E6A23C">前端表格插件 / 功能强大 / 支持前后端分页 / 模板语法 / 可接入三方UI库
 			</h1>
 		</div>
 		<div style="padding-bottom: 2%;">
-			<button class="uiduck-btn" onClick=viewCompletely();>full</button>
-			<button class="uiduck-btn-normal" onClick=viewDocument();>documents</button>
-			<button class="uiduck-btn-normal" onClick=viewCnDocument();>中文文档</button>
+			<button class="uiduck-btn" onClick=viewCompletely();>完整功能</button>
+			<button class="uiduck-btn-normal" onClick=viewDocument();>使用文档</button>
+			<button class="uiduck-btn-normal" onClick=viewEnDocument();>English documents</button>
+
 		</div>
 		<!--以下为两个必须div元素-->
 		<script type="text/html" id="barDemo">
-			<button class="uiduck-btn" onClick=getRow(this);>get the data of this row</button>
+			<button class="uiduck-btn" onClick=getRow(this);>获取此行数据</button>
 		</script>
 		<div id="table"></div>
 		<h4 style="font-size:12px;font-weight:500;color:#4e4f50;padding-top:50px">*
-			The online interface used in this example: <a>http://data.live.126.net/livechannel/sub/3.json</a> | if you
-			have any questions, please contact me hzdz163@163.com</h4>
+			本示例使用的在线接口：<a>http://data.live.126.net/livechannel/sub/3.json</a> | 如有问题可与我联系 hzdz163@163.com</h4>
 	</div>
 </body>
 <script language="Javascript" src="uiduck/js/jquery.min.js"></script>
@@ -49,9 +48,6 @@
 		loading: {
 			icon: "uiduck-loading-6"
 		},
-		language: {
-			tag: 'English'
-		},
 		page: true,
 		pageOptions: {
 			limit: 5,
@@ -59,40 +55,40 @@
 		},
 		fieldOptions: [{
 				index: true,
-				title: "number"
+				title: "序号"
 			},
 			{
 				key: "cid",
 				title: "ID"
 			}, {
 				key: "cname",
-				title: "type"
+				title: "类型"
 			}, {
 				key: "collectionId",
-				title: "collectionId",
+				title: "测试",
 				type: "map",
 				computed: {
-					"0": "Lee",
-					"1": "Du",
-					"2": "Bai",
-					"3": "Wang"
+					"0": "李白",
+					"1": "杜甫",
+					"2": "白居易",
+					"3": "王安石"
 				}
 			}, {
 				key: "icon",
-				title: "icon",
+				title: "图标",
 				type: "image",
 				width: "30px",
 				height: "30px"
 			}, {
 				key: "ename",
-				title: "ename"
+				title: "名称"
 			},
 			{
 				key: "tid",
 				title: "TID"
 			}, {
 				key: "tname",
-				title: "tname"
+				title: "节目名称"
 			}
 		]
 	});
@@ -102,15 +98,14 @@
 	}
 
 	function viewDocument() {
-		window.location.href = "document.html";
+		window.location.href = "document-cn.html";
 	}
 
 	function viewCompletely() {
-		window.location.href = "completely.html";
+		window.location.href = "completely-cn.html";
 	}
-
-	function viewCnDocument() {
-		window.location.href = "index-cn.html";
+	function viewEnDocument() {
+		window.location.href = "index.html";
 	}
 </script>
 

@@ -516,7 +516,7 @@ var uiduck = function (o, e) {
             return h
         },
         showLoading: function (e) {
-            var Width = $("#" + uiduck.udKey).width() / 30+ 'px';
+            var Width = $("#" + uiduck.udKey).width() / 30 + 'px';
             var rect = document.getElementById(uiduck.udKey).getBoundingClientRect();
             var center = {
                 left: rect.left + (rect.right - rect.left) / 2,
@@ -1074,6 +1074,7 @@ var uiduck = function (o, e) {
         firstPage: uiduck.firstPage,
         prevPage: uiduck.prevPage,
         expandPage: uiduck.expandPage,
-        changeLimit: uiduck.changeLimit
+        changeLimit: uiduck.changeLimit,
+        getRow: uiduck.getRow
     }
 }

@@ -61,240 +61,321 @@
 <body>
 	<div style="width: 80%;padding: 0 10%;">
 		<div style="padding-top: 3%;padding-bottom: 2%;">
-			<h1 class="">使用文档</h1>
+			<h1 class="" _msthash="421200" _msttexthash="263016" style="text-align: left;">Use the document</h1>
 		</div>
-		<button class="uiduck-btn-normal" onClick=viewDocument();>返回</button>
+		<button class="uiduck-btn-normal" onclick="viewDocument();" _msthash="414388"
+			_msttexthash="87984">Return.</button>
 		<div style="padding-bottom: 2%;">
 			<table class="uiduck-coffee">
 				<tbody>
 					<tr>
-						<th class="" style="font-weight:blod;width: 25%;" colspan="2">属性名</th>
-						<th class="" style="font-weight:blod">说明</th>
-						<th class="" style="font-weight:blod">默认值</th>
+						<th class="" style="font-weight:blod;width: 25%;" colspan="2" _msthash="1392105"
+							_msttexthash="294476">The property name</th>
+						<th class="" style="font-weight:blod" _msthash="1392755" _msttexthash="183612">Description</th>
+						<th class="" style="font-weight:blod" _msthash="1393405" _msttexthash="156507">The default</th>
 					</tr>
 					<tr>
-						<td class="" style="font-weight: 600;" colspan="2">templateId</td>
-						<td class="">table容器div的id</td>
+						<td class="" style="font-weight: 600;" colspan="2" _msthash="1390194" _msttexthash="151970">
+							templateId</td>
+						<td class="" _msthash="1390844" _msttexthash="416104" style="text-align: left;">Table container
+							div id</td>
 						<td class=""><code>table</code></td>
 					</tr>
 					<tr>
-						<td class="" style="font-weight: 600;" rowspan="5">url</td>
+						<td class="" style="font-weight: 600; text-align: left;" rowspan="5" _msthash="1390779"
+							_msttexthash="35139">url</td>
 						<td class=""></td>
-						<td class="">如果设置此属性，uiduck将会请求网络数据资源。使用AJAX跨域请求。</td>
-						<td class="">无默认值</td>
+						<td class="" _msthash="1392079" _msttexthash="6043570" style="text-align: left;">If you set this
+							property, uiduck will request network data resources. Cross-domain requests using AJAX.</td>
+						<td class="" _msthash="1392729" _msttexthash="496691">There is no default value</td>
 					</tr>
 					<tr>
-						<td class="">url</td>
-						<td class="">要求为String类型的参数，（默认为当前页地址）发送请求的地址。</td>
-						<td class="">无默认值</td>
+						<td class="" _msthash="1391364" _msttexthash="35139" style="text-align: left;">url</td>
+						<td class="" _msthash="1392014" _msttexthash="8629374" style="text-align: left;">The address
+							that requires the request to be sent for the String type's parameters, which defaults to the
+							current page address.</td>
+						<td class="" _msthash="1392664" _msttexthash="496691">There is no default value</td>
 					</tr>
 					<tr>
-						<td class="">type</td>
-						<td class="">要求为String类型的参数，请求方式（post或get）默认为get。注意其他http请求方法，例如put和delete也可以使用，但仅部分浏览器支持。</td>
-						<td class="">无默认值</td>
+						<td class="" _msthash="1391949" _msttexthash="49374">type</td>
+						<td class="" _msthash="1392599" _msttexthash="20827248" style="text-align: left;">Requires
+							parameters of the String type, and the request method (post or get) defaults to get. Note
+							other http request methods, such as put and delete, can also be used, but only some browsers
+							support it.</td>
+						<td class="" _msthash="1393249" _msttexthash="496691">There is no default value</td>
 					</tr>
 					<tr>
-						<td class="">data</td>
-						<td class="">要求为Object或String类型的参数，发送到服务器的数据。</td>
-						<td class="">无默认值</td>
+						<td class="" _msthash="1392534" _msttexthash="45370" style="text-align: left;">data</td>
+						<td class="" _msthash="1393184" _msttexthash="3912662" style="text-align: left;">Data that
+							requires parameters of the Object or String type to be sent to the server.</td>
+						<td class="" _msthash="1393834" _msttexthash="496691">There is no default value</td>
 					</tr>
 					<tr>
-						<td class="">key</td>
-						<td class="">返回数据的key。如：list:[{xx:xx},{xx:xx}],将key设置为list即可</td>
-						<td class="">无默认值</td>
+						<td class="" _msthash="1393119" _msttexthash="34398">key</td>
+						<td class="" _msthash="1393769" _msttexthash="3849144" style="text-align: left;">Returns the key
+							of the data. E.g.: list: . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+							. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .</td>
+						<td class="" _msthash="1394419" _msttexthash="496691">There is no default value</td>
 					</tr>
 					<tr>
-						<td class="" style="font-weight: 600;" colspan="2">data</td>
-						<td class="">表格数据，格式为JSON数组，示例:<br><code>[{"name":"张三"},{"name":"李四"}]</code></td>
+						<td class="" style="font-weight: 600; text-align: left;" colspan="2" _msthash="1393704"
+							_msttexthash="45370">data</td>
+						<td class="" style="text-align: left;">
+							<font _mstmutation="1" _msthash="1831258" _msttexthash="768482">Table data in JSON array,
+								example:</font><br><code>[{"name":"张三"},{"name":"李四"}]</code>
+						</td>
 						<td class="">[]</td>
 					</tr>
 					<tr>
-						<td class="" style="font-weight: 600;" rowspan="6">loading</td>
+						<td class="" style="font-weight: 600; text-align: left;" rowspan="6" _msthash="1394289"
+							_msttexthash="95303">loading</td>
 						<td class=""></td>
-						<td class="">如果设置此属性，uiduck将会显示加载动画</td>
-						<td class="">无默认值</td>
+						<td class="" _msthash="1395589" _msttexthash="2104986" style="text-align: left;">If you set this
+							property, uiduck displays a load animation</td>
+						<td class="" _msthash="1396239" _msttexthash="496691">There is no default value</td>
 					</tr>
 					<tr>
-						<td class="">icon</td>
-						<td class="">加载动画的图标，uiduck为您内置了10种方案。</td>
-						<td class="">无默认值</td>
+						<td class="" _msthash="1423578" _msttexthash="47138" style="text-align: left;">icon</td>
+						<td class="" _msthash="1424241" _msttexthash="2365155" style="text-align: left;">Load the
+							animated icon and uiduck has 10 options built into you.</td>
+						<td class="" _msthash="1424904" _msttexthash="496691">There is no default value</td>
 					</tr>
 					<tr>
-						<td class="">shade</td>
-						<td class="">遮罩层的透明度，如不需要可不设置此项。</td>
-						<td class="">无默认值</td>
+						<td class="" _msthash="1424176" _msttexthash="60073" style="text-align: left;">shade</td>
+						<td class="" _msthash="1424839" _msttexthash="2666573" style="text-align: left;">The
+							transparency of the matte layer, if not required, can not be set.</td>
+						<td class="" _msthash="1425502" _msttexthash="496691">There is no default value</td>
 					</tr>
 					<tr>
-						<td class="">shadeColor</td>
-						<td class="">遮罩层颜色。</td>
-						<td class="">无默认值</td>
+						<td class="" _msthash="1424774" _msttexthash="154297" style="text-align: left;">shadeColor</td>
+						<td class="" _msthash="1425437" _msttexthash="370058" style="text-align: left;">The mask layer
+							color.</td>
+						<td class="" _msthash="1426100" _msttexthash="496691">There is no default value</td>
 					</tr>
 					<tr>
-						<td class="">blur</td>
-						<td class="">模糊的blur值，单位为像素，如不需要可不设置此项。</td>
-						<td class="">无默认值</td>
+						<td class="" _msthash="1425372" _msttexthash="48659" style="text-align: left;">blur</td>
+						<td class="" _msthash="1426035" _msttexthash="1994941" style="text-align: left;">Fuzzy blur
+							values, in pixels, if not needed, can not be set.</td>
+						<td class="" _msthash="1426698" _msttexthash="496691">There is no default value</td>
 					</tr>
 					<tr>
-						<td class="">time</td>
-						<td class="">加载动画的显示时间。</td>
-						<td class="">无默认值</td>
+						<td class="" style="text-align: left;" _msthash="1425970" _msttexthash="47359">time</td>
+						<td class="" style="text-align: left;" _msthash="1426633" _msttexthash="1428934">The display
+							time when the animation was loaded.</td>
+						<td class="" style="text-align: left;" _msthash="1427296" _msttexthash="496691">There is no
+							default value</td>
 					</tr>
 					<tr>
-						<td class="" style="font-weight: 600;" rowspan="4">style</td>
+						<td class="" style="font-weight: 600; text-align: left;" rowspan="4" _msthash="1426568"
+							_msttexthash="65169">style</td>
 						<td class=""></td>
-						<td class="">表格样式设置</td>
+						<td class="" style="text-align: left;" _msthash="1427894" _msttexthash="393978">Table style
+							settings</td>
 						<td class="">
 							<code>{ trClass: "", thClass: "", tdClass: "" }</code>
 						</td>
 					</tr>
 					<tr>
-						<td class="">trClass</td>
-						<td class="">追加 <code>tr</code> 的样式，</td>
-						<td class="">无默认值</td>
+						<td class="" style="text-align: left;" _msthash="1427166" _msttexthash="95537">trClass</td>
+						<td class="" style="text-align: left;">
+							<font _mstmutation="1" _msthash="1872884" _msttexthash="434824">The style of the append,
+							</font><code>tr</code>
+						</td>
+						<td class="" style="text-align: left;" _msthash="1428492" _msttexthash="496691">There is no
+							default value</td>
 					</tr>
 					<tr>
-						<td class="">thClass</td>
-						<td class="">追加 <code>th</code> 的样式</td>
-						<td class="">无默认值</td>
+						<td class="" style="text-align: left;" _msthash="1427764" _msttexthash="94497">thClass</td>
+						<td class="" style="text-align: left;">
+							<font _mstmutation="1" _msthash="1873482" _msttexthash="489190">The style of the appended
+							</font><code>th</code>
+						</td>
+						<td class="" style="text-align: left;" _msthash="1429090" _msttexthash="496691">There is no
+							default value</td>
 					</tr>
 					<tr>
-						<td class="">tdClass</td>
-						<td class="">追加 <code>td</code> 的样式</td>
-						<td class="">无默认值</td>
+						<td class="" style="text-align: left;" _msthash="1428362" _msttexthash="94081">tdClass</td>
+						<td class="" style="text-align: left;">
+							<font _mstmutation="1" _msthash="1874080" _msttexthash="489190">The style of the appended
+							</font><code>td</code>
+						</td>
+						<td class="" style="text-align: left;" _msthash="1429688" _msttexthash="496691">There is no
+							default value</td>
 					</tr>
 					<tr>
-						<td class="" style="font-weight: 600;" rowspan="5">topBar</td>
+						<td class="" style="font-weight: 600; text-align: left;" rowspan="5" _msthash="1428960"
+							_msttexthash="75439">topBar</td>
 						<td class=""></td>
-						<td class="">顶部工具栏，可以放置搜索等相关工具，默认关闭</td>
+						<td class="" style="text-align: left;" _msthash="1430286" _msttexthash="4533074">At the top of
+							the toolbar, you can place tools such as search, which is turned off by default</td>
 						<td class="">
 							<code>{ templateId: "search", kwLight: true, kwSplite: false, kwSpliteList: [] },</code>
 						</td>
 					</tr>
 					<tr>
-						<td class="">templateId</td>
-						<td class="">
-							指定topbar的div容器id，示例：<code>&#60;div id="topBar"
-								uiduck-keyWord="name"&#62;&#60;/div"&#62;</code>
+						<td class="" style="text-align: left;" _msthash="1424163" _msttexthash="151970">templateId</td>
+						<td class="" style="text-align: left;">
+							<font _mstmutation="1" _msthash="1869881" _msttexthash="1269996"> Specify topbar's div
+								container id, example:</font><code>&lt;div id="topBar"
+								uiduck-keyWord="name"&gt;&lt;/div"&gt;</code>
 						</td>
-						<td class="">无默认值</td>
+						<td class="" style="text-align: left;" _msthash="1425489" _msttexthash="496691">There is no
+							default value</td>
 					</tr>
 					<tr>
-						<td class="">kwLight</td>
-						<td class="">
-							是否开启关键词高亮</td>
+						<td class="" style="text-align: left;" _msthash="1424761" _msttexthash="95212">kwLight</td>
+						<td class="" style="text-align: left;" _msthash="1425424" _msttexthash="1122368"> Whether to
+							turn on keyword highlighting</td>
 						<td class=""><code>false</code></td>
 					</tr>
 					<tr>
-						<td class="">kwSplite</td>
-						<td class="">是否分词高亮</td>
+						<td class="" style="text-align: left;" _msthash="1425359" _msttexthash="116194">kwSplite</td>
+						<td class="" style="text-align: left;" _msthash="1426022" _msttexthash="889382">Whether the
+							parting is highlighted</td>
 						<td class=""><code>false</code></td>
 					</tr>
 					<tr>
-						<td class="">kwSpliteList</td>
-						<td class="">分词高亮数组，如<code>青岛XXX集团</code>,后台分词后转为
-							<code>['青岛','XXX','集团']</code>，通过分词高亮，将列中的<code>青岛AAAXXXVV集团</code>中的关键词<code>青岛,XXX,集团</code>高亮。
+						<td class="" style="text-align: left;" _msthash="1425957" _msttexthash="205413">kwSpliteList
+						</td>
+						<td class="" style="text-align: left;">
+							<font _mstmutation="1" _msthash="1871675" _msttexthash="14164358">An array of parting
+								highlights, such as, after the background parting is converted to , highlighting the key
+								words in the column by highlighting the parting words. </font>
+							<code>Qingdao XXX group</code><code>['Qingdao','XXX','group']</code><code>QingdaoAAAXXXVVgroup[</code><code>Qingdao,XXX,group</code>
 						</td>
 						<td class=""><code>[]</code></td>
 					</tr>
 					<tr>
-						<td class="" style="font-weight: 600;" rowspan="9">fieldOptions</td>
+						<td class="" style="font-weight: 600; text-align: left;" rowspan="9" _msthash="1426555"
+							_msttexthash="207506">fieldOptions</td>
 						<td class=""></td>
-						<td class="">表头和数据渲染</td>
+						<td class="" style="text-align: left;" _msthash="1427881" _msttexthash="562822">Headers and data
+							rendering</td>
 						<td class="">
 							<code>[]</code>
 						</td>
 					</tr>
 					<tr>
-						<td class="">index</td>
-						<td class="">是否添加索引</code>
-						</td>
+						<td class="" style="text-align: left;" _msthash="1427153" _msttexthash="62985">index</td>
+						<td class="" style="text-align: left;" _msthash="1427816" _msttexthash="417053">Whether to add
+							an index </td>
 						<td class=""><code>false</code></td>
 					</tr>
 					<tr>
-						<td class="">key</td>
-						<td class="">
-							表格数据列的唯一标识</td>
-						<td class="">无默认值</td>
+						<td class="" style="text-align: left;" _msthash="1427751" _msttexthash="34398">key</td>
+						<td class="" style="text-align: left;" _msthash="1428414" _msttexthash="1660932"> The unique
+							identification of the table data column</td>
+						<td class="" style="text-align: left;" _msthash="1429077" _msttexthash="496691">There is no
+							default value</td>
 					</tr>
 					<tr>
-						<td class="">title</td>
-						<td class="">标题名称</td>
-						<td class="">无默认值</td>
+						<td class="" style="text-align: left;" _msthash="1428349" _msttexthash="63531">title</td>
+						<td class="" style="text-align: left;" _msthash="1429012" _msttexthash="204451">The title name
+						</td>
+						<td class="" style="text-align: left;" _msthash="1429675" _msttexthash="496691">There is no
+							default value</td>
 					</tr>
 					<tr>
-						<td class="">width</td>
-						<td class="">列宽,可设置为百分比和数字。数字下单位为像素</td>
-						<td class="">无默认值</td>
+						<td class="" style="text-align: left;" _msthash="1428947" _msttexthash="63401">width</td>
+						<td class="" style="text-align: left;" _msthash="1429610" _msttexthash="5134584">Column width,
+							which can be set to percentages and numbers. The units under the number are pixels</td>
+						<td class="" style="text-align: left;" _msthash="1430273" _msttexthash="496691">There is no
+							default value</td>
 					</tr>
 					<tr>
-						<td class="">style</td>
-						<td class="">追加的css样式，示例:<code>bakground：red</code></td>
-						<td class="">无默认值</td>
+						<td class="" style="text-align: left;" _msthash="1429545" _msttexthash="65169">style</td>
+						<td class="" style="text-align: left;">
+							<font _mstmutation="1" _msthash="1875263" _msttexthash="623389">Appended css style, example:
+							</font><code>bakground：red</code>
+						</td>
+						<td class="" style="text-align: left;" _msthash="1430871" _msttexthash="496691">There is no
+							default value</td>
 					</tr>
 					<tr>
-						<td class="">type</td>
-						<td class="">字段类型，如images或map</code></td>
-						<td class="">无默认值</td>
+						<td class="" style="text-align: left;" _msthash="1424748" _msttexthash="49374">type</td>
+						<td class="" style="text-align: left;" _msthash="1425411" _msttexthash="837044">Field types,
+							such as images or maps</td>
+						<td class="" style="text-align: left;" _msthash="1426074" _msttexthash="496691">There is no
+							default value</td>
 					</tr>
 					<tr>
-						<td class="">computed</td>
-						<td class="">计算绑定值，如<code>computed: {
+						<td class="" style="text-align: left;" _msthash="1425346" _msttexthash="117962">computed</td>
+						<td class="" style="text-align: left;">
+							<font _mstmutation="1" _msthash="1871064" _msttexthash="2191423">Calculate the binding
+								value, such as 1 when Duff is displayed</font><code>computed: {
 								"0": "李白",
 								"1": "杜甫",
 								"2": "白居易",
 								"3": "王安石"
-								}</code>为1时显示杜甫</td>
-						<td class="">无默认值</td>
+								}</code>
+						</td>
+						<td class="" style="text-align: left;" _msthash="1426672" _msttexthash="496691">There is no
+							default value</td>
 					</tr>
 					<tr>
-						<td class="">hide</td>
-						<td class="">是否隐藏此列</td>
+						<td class="" style="text-align: left;" _msthash="1425944" _msttexthash="45214">hide</td>
+						<td class="" style="text-align: left;" _msthash="1426607" _msttexthash="580112">Whether to hide
+							this column</td>
 						<td class=""><code>false</code></td>
 					</tr>
 					<tr>
-						<td class="" style="font-weight: 600;" colspan="2">page</td>
-						<td class="">是否开启分页</code></td>
+						<td class="" style="font-weight: 600; text-align: left;" colspan="2" _msthash="1426542"
+							_msttexthash="45461">page</td>
+						<td class="" style="text-align: left;" _msthash="1427205" _msttexthash="538525">Whether to turn
+							on pedding</td>
 						<td class=""><code>false</code></td>
 					</tr>
 					<tr>
-						<td class="" style="font-weight: 600;" rowspan="4">rightTool</td>
+						<td class="" style="font-weight: 600; text-align: left;" rowspan="4" _msthash="1427140"
+							_msttexthash="136578">rightTool</td>
 						<td class=""></td>
-						<td class="">右侧工具栏配置</td>
+						<td class="" style="text-align: left;" _msthash="1428466" _msttexthash="1043965">The right-hand
+							toolbar configuration</td>
 						<td class="">
 							<code>rightTool: { templateId: "barDemo", title: "操作", width: "100px" },</code>
 						</td>
 					</tr>
 					<tr>
-						<td class="">templateId</td>
-						<td class="">工具栏容器div的id</td>
-						<td class="">无默认值</td>
+						<td class="" style="text-align: left;" _msthash="1427738" _msttexthash="151970">templateId</td>
+						<td class="" style="text-align: left;" _msthash="1428401" _msttexthash="844649">The id of the
+							toolbar container div</td>
+						<td class="" style="text-align: left;" _msthash="1429064" _msttexthash="496691">There is no
+							default value</td>
 					</tr>
 					<tr>
-						<td class="">title</td>
-						<td class="">标题</td>
-						<td class="">无默认值</td>
+						<td class="" style="text-align: left;" _msthash="1428336" _msttexthash="63531">title</td>
+						<td class="" style="text-align: left;" _msthash="1428999" _msttexthash="67795">Title.</td>
+						<td class="" style="text-align: left;" _msthash="1429662" _msttexthash="496691">There is no
+							default value</td>
 					</tr>
 					<tr>
-						<td class="">width</td>
-						<td class="">宽度</td>
-						<td class="">无默认值</td>
+						<td class="" style="text-align: left;" _msthash="1428934" _msttexthash="63401">width</td>
+						<td class="" style="text-align: left;" _msthash="1429597" _msttexthash="67665">Width.</td>
+						<td class="" style="text-align: left;" _msthash="1430260" _msttexthash="496691">There is no
+							default value</td>
 					</tr>
 					<tr>
-						<td class="" style="font-weight: 600;" rowspan="3">language</td>
+						<td class="" style="font-weight: 600; text-align: left;" rowspan="3" _msthash="1429532"
+							_msttexthash="113828">language</td>
 						<td class=""></td>
-						<td class="">多语言设置，如没有配置此项，将会根据浏览器的语言自动设置</td>
+						<td class="" style="text-align: left;" _msthash="1430858" _msttexthash="5936606">Multilingual
+							settings, if not configured, are automatically set according to the browser's language</td>
 						<td class="">
 							<code>language: { tag: "CN", options: [] },</code>
 						</td>
 					</tr>
 					<tr>
-						<td class="">tag</td>
-						<td class="">语言的标签，如：<code>Chinese</code><code>English</code></td>
+						<td class="" style="text-align: left;" _msthash="1430130" _msttexthash="30433">Day</td>
+						<td class="" style="text-align: left;">
+							<font _mstmutation="1" _msthash="1875848" _msttexthash="492856">Language labels, such as:
+							</font><code>Chinese</code><code>English</code>
+						</td>
 						<td class=""><code>Chinese</code></td>
 					</tr>
 					<tr>
-						<td class="">options</td>
-						<td class="">字典配置</td>
+						<td class="" style="text-align: left;" _msthash="1425333" _msttexthash="101439">options</td>
+						<td class="" style="text-align: left;" _msthash="1425996" _msttexthash="579423">Dictionary
+							configuration</td>
 						<td class=""><code>options = { "udHome": "首页", "udTotal": "共", "udList": "条", "udPrev": "上一页",
 								"udNext": "下一页", "udLast": "尾页", "udGo": "前往", "udPage": "页", "udSub": "确定", "udNodata":
 								"暂无数据" };
@@ -303,38 +384,48 @@
 				</tbody>
 			</table>
 			<br>
-			<h3>分页配置说明</h3>
-			<p class="lead">支持前端后端、网络请求和本地数据分页。算法可参考源码</p>
+			<h3 style="text-align: left;" _msthash="423657" _msttexthash="914160">Paged configuration instructions</h3>
+			<p class="lead" style="text-align: left;" _msthash="407563" _msttexthash="7211685">Supports front-end
+				back-end, network requests, and local data pedding. The algorithm can refer to the source code</p>
 			<table class="uiduck-coffee">
 				<tbody>
 					<tr>
-						<th class="" style="font-weight:blod;width: 25%;" colspan="2">属性名</th>
-						<th class="" style="font-weight:blod">说明</th>
-						<th class="" style="font-weight:blod">默认值</th>
+						<th class="" style="font-weight:blod;width: 25%;" colspan="2" _msthash="1394185"
+							_msttexthash="294476">The property name</th>
+						<th class="" style="font-weight:blod" _msthash="1394835" _msttexthash="183612">Description</th>
+						<th class="" style="font-weight:blod" _msthash="1395485" _msttexthash="156507">The default</th>
 					</tr>
 					<tr>
-						<td class="" style="font-weight: 600;" rowspan="3">autoNext</td>
+						<td class="" style="font-weight: 600; text-align: left;" rowspan="3" _msthash="1392274"
+							_msttexthash="117299">autoNext</td>
 						<td class=""></td>
-						<td class="">是否自动翻页</td>
+						<td class="" style="text-align: left;" _msthash="1393574" _msttexthash="1062113">Whether to turn
+							the page automatically</td>
 						<td class="">
 							<code>autoNext: { time: 2000, showPage: true }</code>
 						</td>
 					</tr>
 					<tr>
-						<td class="">time</td>
-						<td class="">间隔时间，单位毫秒</td>
-						<td class="">无默认值</td>
+						<td class="" style="text-align: left;" _msthash="1392859" _msttexthash="47359">time</td>
+						<td class="" style="text-align: left;" _msthash="1393509" _msttexthash="735787">Interval time,
+							in milliseconds</td>
+						<td class="" style="text-align: left;" _msthash="1394159" _msttexthash="496691">There is no
+							default value</td>
 					</tr>
 					<tr>
-						<td class="">showPage</td>
-						<td class="">自动翻页时是否显示分页栏</td>
-						<td class="">无默认值</td>
+						<td class="" style="text-align: left;" _msthash="1393444" _msttexthash="112099">showPage</td>
+						<td class="" style="text-align: left;" _msthash="1394094" _msttexthash="2538666">Whether to
+							display a paged bar when you turn pages automatically</td>
+						<td class="" style="text-align: left;" _msthash="1394744" _msttexthash="496691">There is no
+							default value</td>
 					</tr>
 
 					<tr>
-						<td class="" style="font-weight: 600;" rowspan="8">pageOptions</td>
+						<td class="" style="font-weight: 600; text-align: left;" rowspan="8" _msthash="1394029"
+							_msttexthash="182884">pageOptions</td>
 						<td class=""></td>
-						<td class="">分页配置</td>
+						<td class="" style="text-align: left;" _msthash="1395329" _msttexthash="420563">Peddle
+							configuration</td>
 						<td class="">
 							<code>pageOptions: { pageClass: "", style: "", limit: "", dataType: "back", limits: ['5',
 								'10', '15', '20', '25', '30'], layout:
@@ -342,108 +433,146 @@
 						</td>
 					</tr>
 					<tr>
-						<td class="">pageClass</td>
-						<td class="">底部分页栏的样式
-						</td>
-						<td class="">无默认值</td>
+						<td class="" style="text-align: left;" _msthash="1394614" _msttexthash="131638">pageClass</td>
+						<td class="" style="text-align: left;" _msthash="1395264" _msttexthash="1341912">The style of
+							the bottom section of the page bar </td>
+						<td class="" style="text-align: left;" _msthash="1395914" _msttexthash="496691">There is no
+							default value</td>
 					</tr>
 					<tr>
-						<td class="">emClass</td>
-						<td class="">底部分页栏当前页的样式
-						</td>
-						<td class="">无默认值</td>
+						<td class="" style="text-align: left;" _msthash="1395199" _msttexthash="93652">emClass</td>
+						<td class="" style="text-align: left;" _msthash="1395849" _msttexthash="2511548">The style of
+							the current page in the bottom section of the page bar </td>
+						<td class="" style="text-align: left;" _msthash="1396499" _msttexthash="496691">There is no
+							default value</td>
 					</tr>
 					<tr>
-						<td class="">limit</td>
-						<td class="">每页显示的条数</td>
+						<td class="" style="text-align: left;" _msthash="1395784" _msttexthash="63739">limit</td>
+						<td class="" style="text-align: left;" _msthash="1396434" _msttexthash="939471">The number of
+							bars displayed per page</td>
 						<td class=""><code>10</code></td>
 					</tr>
 					<tr>
-						<td class="">limits</td>
-						<td class="">每页条数的选择项。
-						</td>
+						<td class="" style="text-align: left;" _msthash="1396369" _msttexthash="81679">limits</td>
+						<td class="" style="text-align: left;" _msthash="1397019" _msttexthash="1244997">The selection
+							of the number of bars per page. </td>
 						<td class=""><code>['5', '10', '15', '20', '25', '30']</code></td>
 					</tr>
 					<tr>
-						<td class="">layout</td>
-						<td class="">分页的排版，total 为总条数，home 为首页，prev 为上一页，next 为下一页，last 为尾页，set 为设置每页显示的条数，jump 为跳转到
-						</td>
+						<td class="" style="text-align: left;" _msthash="1425658" _msttexthash="83330">layout</td>
+						<td class="" style="text-align: left;" _msthash="1426321" _msttexthash="20138443">Page layout,
+							total number of bars, home for the first page, prev for the previous page, next for the next
+							page, last for the end page, set for setting the number of bars displayed per page, jump for
+							jump </td>
 						<td class=""><code>["total", "home", "prev", "next", "last", "set", "jump"]</code></td>
 					</tr>
 					<tr>
-						<td class="">index</td>
-						<td class="">当前页的索引</td>
+						<td class="" style="text-align: left;" _msthash="1426256" _msttexthash="62985">index</td>
+						<td class="" style="text-align: left;" _msthash="1426919" _msttexthash="615628">The index of the
+							current page</td>
 						<td class=""><code>0</code></td>
 					</tr>
 					<tr>
-						<td class="">count</td>
-						<td class="">总页数</td>
+						<td class="" style="text-align: left;" _msthash="1426854" _msttexthash="65130">count</td>
+						<td class="" style="text-align: left;" _msthash="1427517" _msttexthash="493974">The total number
+							of pages</td>
 						<td class=""><code>0</code></td>
 					</tr>
 				</tbody>
 			</table>
 
 			<br>
-			<h3>方法说明</h3>
-			<p class="lead">以下均为对外方法。如需查看内置方法，可以参考源码。</p>
+			<h3 style="text-align: left;" _msthash="425542" _msttexthash="355264">Method description</h3>
+			<p class="lead" style="text-align: left;" _msthash="424203" _msttexthash="5247164">The following are
+				external methods. To see the built-in methods, you can refer to the source code.</p>
 			<table class="uiduck-coffee">
 				<tbody>
 					<tr>
-						<th class="" style="font-weight:blod;width: 25%;" colspan="2">方法名</th>
-						<th class="" style="font-weight:blod">说明</th>
-						<th class="" style="font-weight:blod">参数</th>
+						<th class="" style="font-weight:blod;width: 25%;" colspan="2" _msthash="1433445"
+							_msttexthash="229034">The method name</th>
+						<th class="" style="font-weight:blod" _msthash="1434108" _msttexthash="183612">Description</th>
+						<th class="" style="font-weight:blod" _msthash="1434771" _msttexthash="168961">Parameters.</th>
 					</tr>
 					<tr>
-						<td class="" style="font-weight: 600;" colspan="2">new uiduck(String,{Object})</td>
-						<td class="">初始化并创建uiduck对象。</br>
-							var xxx = new uiduck('xxx',{...})
-							</br>
+						<td class="" style="font-weight: 600; text-align: left;" colspan="2" _msthash="1431495"
+							_msttexthash="641966">new uiduck(String,{Object})</td>
+						<td class="" style="text-align: left;">
+							<font _mstmutation="1" _msthash="1877213" _msttexthash="2874066">Initialize and create the
+								uiduck object. <br _mstmutation="1" _istranslated="1"> var xxx s new uiduck ('xxx',
+								....) </font><br>
 
 
 						</td>
-						<td class="">示例：<code>var uiduck = new uiduck('uiduck1',{ templateId: "table", url: { url:
-								"http://localhost/uiduck/getList", type: "GET" }})</code></td>
+						<td class="" style="text-align: left;">
+							<font _mstmutation="1" _msthash="1877876" _msttexthash="104767">Example:</font><code>var
+								uiduck = new uiduck('uiduck1',{ templateId: "table", url: { url:
+								"http://localhost/uiduck/getList", type: "GET" }})</code>
+						</td>
 					</tr>
 					<tr>
-						<td class="" style="font-weight: 600;" colspan="2">uiduck.getRow(Object)</td>
-						<td class="">获取该行数据,一般用于右侧工具栏操作编辑或删除。</td>
-						<td class="">例：<code>
+						<td class="" style="font-weight: 600; text-align: left;" colspan="2" _msthash="1432093"
+							_msttexthash="432133">uiduck.getRow(Object)</td>
+						<td class="" style="text-align: left;" _msthash="1432756" _msttexthash="4147598">Gets the row
+							data, typically used for right-hand toolbar action editing or deletion.</td>
+						<td class="" style="text-align: left;">
+							<font _mstmutation="1" _msthash="1878474" _msttexthash="68263">Cases:</font><code>
 
 								var xxx = new uiduck('xxx',{...})
-								</br>
-								xxx.getRow(this)</code></td>
+								<br>
+								xxx.getRow(this)</code>
+						</td>
 					</tr>
 					<tr>
-						<td class="" style="font-weight: 600;" colspan="2">uiduck.skipPage(int)</td>
-						<td class="">跳转到第N页</td>
-						<td class="">例：<code>
+						<td class="" style="font-weight: 600; text-align: left;" colspan="2" _msthash="1432691"
+							_msttexthash="401232">uiduck.skipPage(int)</td>
+						<td class="" style="text-align: left;" _msthash="1433354" _msttexthash="175032">Jump to page N
+						</td>
+						<td class="" style="text-align: left;">
+							<font _mstmutation="1" _msthash="1879072" _msttexthash="68263">Cases:</font><code>
 								var xxx = new uiduck('xxx',{...})
-								</br>
-								xxx.skipPage(N)</code></td>
+								<br>
+								xxx.skipPage(N)</code>
+						</td>
 					</tr>
 					<tr>
-						<td class="" style="font-weight: 600;" colspan="2">uiduck.refresh()</td>
-						<td class="">重新加载数据并渲染</td>
-						<td class="">例：<code>
-								var xxx = new uiduck('xxx',{...})
-								</br>
-								xxx.refresh()</code></td>
-					</tr>
-					<tr>
-						<td style="font-weight: 600;" colspan="2">uiduck.setData(Object,Boolean)</td>
+						<td class="" style="font-weight: 600; text-align: left;" colspan="2" _msthash="1433289"
+							_msttexthash="275678">uiduck.refresh()</td>
+						<td class="" _msthash="1433952" _msttexthash="606840" style="text-align: left;">Reload the data
+							and render it</td>
 						<td class="">
-							重置数据。如数据模式为网络数据，且不想使用内部继承的ajax,可以不使用uiduck.url配置。使用自定义的网络请求获取数据，并在通过此方法将数据置入。本地数据boolean设为false，网络数据设为true。
-						</td>
-						<td class="">例：<code>
+							<font _mstmutation="1" _msthash="1879670" _msttexthash="68263">Cases:</font><code>
 								var xxx = new uiduck('xxx',{...})
-								</br>
-								xxx.setData([{"id":"1","name","张三"},{"id":"2","name","李四"}],false)</code></td>
+								<br>
+								xxx.refresh()</code>
+						</td>
+					</tr>
+					<tr>
+						<td style="font-weight: 600; text-align: left;" colspan="2" _msthash="1433887"
+							_msttexthash="775632">uiduck.setData(Object,Boolean)</td>
+						<td class="" _msthash="1434550" _msttexthash="38025520" style="text-align: left;"> Reset the
+							data. If the data pattern is network data and you do not want to use internally inherited
+							ajax, you can configure it without uiduck.url. Use a custom network request to get data and
+							place it in this way. Local data boolean is set to false, and network data is set to true.
+						</td>
+						<td class="">
+							<font _mstmutation="1" _msthash="1880268" _msttexthash="68263">Cases:</font><code>
+								var xxx = new uiduck('xxx',{...})
+								<br>
+								xxx.setData([{"id":"1","name","张三"},{"id":"2","name","李四"}],false)</code>
+						</td>
 					</tr>
 
 				</tbody>
 			</table>
 		</div>
 	</div>
+
+	<script>
+		function viewDocument() {
+			window.location.href = "index.html";
+		}
+	</script>
+
 </body>
 <script>
 	function viewDocument() {
