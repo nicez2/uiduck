@@ -1,0 +1,42 @@
+/** uiduck MIT License By https://www.uiduck.com */
+
+.uiduck-white {
+	margin: 0 auto;
+	font-size: 1.2em;
+	margin-bottom: 15px;
+}
+
+.uiduck-white thead {
+	cursor: pointer;
+	background: #c9dff0;
+}
+
+.uiduck-white thead tr th {
+	font-weight: bold;
+	padding: 12px 30px;
+	padding-left: 42px;
+}
+
+.uiduck-white thead tr th span {
+	padding-right: 20px;
+	background-repeat: no-repeat;
+	background-position: 100% 100%;
+}
+
+.uiduck-white thead tr th.headerSortUp,.uiduck-white thead tr th.headerSortDown {
+	background: #acc8dd;
+}
+
+
+.uiduck-white tbody tr {
+	color: #555;
+}
+
+.uiduck-white tbody tr td {
+	text-align: center;
+	padding: 15px 10px;
+}
+
+.uiduck-white tbody tr td.lalign {
+	text-align: left;
+}

@@ -8,11 +8,11 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 	<link href="uiduck/css/uiduck.css" type="text/css" rel="stylesheet">
-	<link href="uiduck/css/table.css" type="text/css" rel="stylesheet">
+	<link href="uiduck/css/simple.css" type="text/css" rel="stylesheet">
 </head>
 
 <body>
-	<div style="width: 80%;padding: 0 10%;padding-bottom: 200px;">
+	<div style="width:60%;padding: 0 20%;padding-bottom: 200px;">
 		<div style="padding-top: 3%;padding-bottom: 2%;">
 			<h1 class="" style="font-size:100px;font-weight:900;color:#409EFF">uiduck </h1>
 			<h1 class="" style="font-size:24px;font-weight:500;color:#E6A23C">前端表格插件 / 功能强大 / 支持前后端分页 / 模板语法 / 可接入三方UI库
@@ -22,6 +22,10 @@
 			<button class="uiduck-btn" onClick=viewCompletely();>完整功能</button>
 			<button class="uiduck-btn-normal" onClick=viewDocument();>使用文档</button>
 		</div>
+		<!--以下为两个必须div元素-->
+		<script type="text/html" id="barDemo">
+			<button class="uiduck-btn" onClick=getRow(this);>获取此行数据</button>
+		</script>
 		<div id="table"></div>
 		<h4 style="font-size:12px;font-weight:500;color:#4e4f50;padding-top:50px">*
 			本示例使用的在线接口：<a>http://data.live.126.net/livechannel/sub/3.json</a> | 如有问题可与我联系 hzdz163@163.com</h4>
@@ -31,18 +35,29 @@
 <script language="Javascript" src="uiduck/js/json2.js"></script>
 <script language="Javascript" src="uiduck/js/uiduck.js"></script>
 <script LANGUAGE="javascript">
-	uiduck.setOptions({
+	//页面一打开就执行，放入ready是为了layer所需配件（css、扩展模块）加载完毕
+	var uiduck1 = new uiduck('uiduck1', {
 		templateId: "table",
-		url: { url: "http://data.live.126.net/livechannel/sub/3.json", type: "POST", key: "sublives" },
+		url: {
+			url: "http://data.live.126.net/livechannel/sub/3.json",
+			type: "POST",
+			key: "sublives"
+		},
+		loading: {
+			icon: "uiduck-loading-6"
+		},
 		page: true,
-		pageOptions: { limit: 5, limits: ['5', '10', '15', '60'] },
-		fieldOptions: [
-			{
+		pageOptions: {
+			limit: 5,
+			limits: ['5', '10', '15', '20', '25']
+		},
+		fieldOptions: [{
 				index: true,
 				title: "序号"
-			}, {
-				key: "tname",
-				title: "节目名称"
+			},
+			{
+				key: "cid",
+				title: "ID"
 			}, {
 				key: "cname",
 				title: "类型"
@@ -63,13 +78,27 @@
 				width: "30px",
 				height: "30px"
 			}, {
-				key: "icon",
-				title: "图标链接"
-			}]
+				key: "ename",
+				title: "名称"
+			},
+			{
+				key: "tid",
+				title: "TID"
+			}, {
+				key: "tname",
+				title: "节目名称"
+			}
+		]
 	});
+
+	function getRow(e) {
+		alert(JSON.stringify(uiduck.getRow(e)))
+	}
+
 	function viewDocument() {
 		window.location.href = "document.html";
 	}
+
 	function viewCompletely() {
 		window.location.href = "completely.html";
 	}

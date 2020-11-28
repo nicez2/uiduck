@@ -173,7 +173,8 @@
 					<tr>
 						<td class="">templateId</td>
 						<td class="">
-							指定topbar的div容器id，示例：<code>&#60;div id="topBar" uiduck-keyWord="name"&#62;&#60;/div"&#62;</code>
+							指定topbar的div容器id，示例：<code>&#60;div id="topBar"
+								uiduck-keyWord="name"&#62;&#60;/div"&#62;</code>
 						</td>
 						<td class="">无默认值</td>
 					</tr>
@@ -238,11 +239,11 @@
 					<tr>
 						<td class="">computed</td>
 						<td class="">计算绑定值，如<code>computed: {
-						"0": "李白",
-						"1": "杜甫",
-						"2": "白居易",
-						"3": "王安石"
-					}</code>为1时显示杜甫</td>
+								"0": "李白",
+								"1": "杜甫",
+								"2": "白居易",
+								"3": "王安石"
+								}</code>为1时显示杜甫</td>
 						<td class="">无默认值</td>
 					</tr>
 					<tr>
@@ -294,8 +295,10 @@
 					<tr>
 						<td class="">options</td>
 						<td class="">字典配置</td>
-						<td class=""><code>options = { "udHome": "首页", "udTotal": "共", "udList": "条", "udPrev": "上一页", "udNext": "下一页", "udLast": "尾页", "udGo": "前往", "udPage": "页", "udSub": "确定", "udNodata": "暂无数据" };
-					  </code></td>
+						<td class=""><code>options = { "udHome": "首页", "udTotal": "共", "udList": "条", "udPrev": "上一页",
+								"udNext": "下一页", "udLast": "尾页", "udGo": "前往", "udPage": "页", "udSub": "确定", "udNodata":
+								"暂无数据" };
+							</code></td>
 					</tr>
 				</tbody>
 			</table>
@@ -333,8 +336,9 @@
 						<td class=""></td>
 						<td class="">分页配置</td>
 						<td class="">
-							<code>pageOptions: { pageClass: "", style: "", limit: "", dataType: "back", limits: ['5', '10', '15', '20', '25', '30'], layout:
-							  ["total", "home", "prev", "next", "last", "set", "jump"], index: 0, count: 0 }</code>
+							<code>pageOptions: { pageClass: "", style: "", limit: "", dataType: "back", limits: ['5',
+								'10', '15', '20', '25', '30'], layout:
+								["total", "home", "prev", "next", "last", "set", "jump"], index: 0, count: 0 }</code>
 						</td>
 					</tr>
 					<tr>
@@ -390,34 +394,50 @@
 						<th class="" style="font-weight:blod">参数</th>
 					</tr>
 					<tr>
-						<td class="" style="font-weight: 600;" colspan="2">uiduck.setOptions(Object)</td>
-						<td class="">uiduck初始化</td>
-						<td class="">示例：<code>uiduck.setOptions({
-						templateId: "table",
-						url: { url: "http://localhost/uiduck/getList", type: "GET" }})</code></td>
+						<td class="" style="font-weight: 600;" colspan="2">new uiduck(String,{Object})</td>
+						<td class="">初始化并创建uiduck对象。</br>
+							var xxx = new uiduck('xxx',{...})
+							</br>
+
+
+						</td>
+						<td class="">示例：<code>var uiduck = new uiduck('uiduck1',{ templateId: "table", url: { url:
+								"http://localhost/uiduck/getList", type: "GET" }})</code></td>
 					</tr>
 					<tr>
 						<td class="" style="font-weight: 600;" colspan="2">uiduck.getRow(Object)</td>
 						<td class="">获取该行数据,一般用于右侧工具栏操作编辑或删除。</td>
-						<td class="">例：<code>uiduck.getRow(this)</code></td>
+						<td class="">例：<code>
+
+								var xxx = new uiduck('xxx',{...})
+								</br>
+								xxx.getRow(this)</code></td>
 					</tr>
 					<tr>
 						<td class="" style="font-weight: 600;" colspan="2">uiduck.skipPage(int)</td>
 						<td class="">跳转到第N页</td>
-						<td class="">例：跳转到第一页<code>uiduck.skipPage(1)</code></td>
+						<td class="">例：<code>
+								var xxx = new uiduck('xxx',{...})
+								</br>
+								xxx.skipPage(N)</code></td>
 					</tr>
 					<tr>
 						<td class="" style="font-weight: 600;" colspan="2">uiduck.refresh()</td>
 						<td class="">重新加载数据并渲染</td>
-						<td class="">例：<code>uiduck.refresh()</code></td>
+						<td class="">例：<code>
+								var xxx = new uiduck('xxx',{...})
+								</br>
+								xxx.refresh()</code></td>
 					</tr>
 					<tr>
 						<td style="font-weight: 600;" colspan="2">uiduck.setData(Object,Boolean)</td>
 						<td class="">
 							重置数据。如数据模式为网络数据，且不想使用内部继承的ajax,可以不使用uiduck.url配置。使用自定义的网络请求获取数据，并在通过此方法将数据置入。本地数据boolean设为false，网络数据设为true。
 						</td>
-						<td class="">
-							例：<code>uiduck.setData([{"id":"1","name","张三"},{"id":"2","name","李四"}],false)</code></td>
+						<td class="">例：<code>
+								var xxx = new uiduck('xxx',{...})
+								</br>
+								xxx.setData([{"id":"1","name","张三"},{"id":"2","name","李四"}],false)</code></td>
 					</tr>
 
 				</tbody>
