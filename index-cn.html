@@ -38,60 +38,142 @@
 <script language="Javascript" src="uiduck/js/uiduck.js"></script>
 <script LANGUAGE="javascript">
 	//页面一打开就执行，放入ready是为了layer所需配件（css、扩展模块）加载完毕
-	var uiduck1 = new uiduck('uiduck1', {
+	var uiduck2 = new uiduck('uiduck2', {
 		templateId: "table",
-		url: {
-			url: "http://data.live.126.net/livechannel/sub/3.json",
-			type: "POST",
-			key: "sublives"
-		},
 		loading: {
 			icon: "uiduck-loading-6"
+		},
+		language: {
+			tag: 'English'
 		},
 		page: true,
 		pageOptions: {
 			limit: 5,
 			limits: ['5', '10', '15', '20', '25']
 		},
+		page: true,
 		fieldOptions: [{
 				index: true,
-				title: "序号"
+				title: "index"
 			},
 			{
-				key: "cid",
-				title: "ID"
+				key: "icon",
+				title: "icon",
+				type: "image",
+				width: "20px",
+				height: "20px"
 			}, {
-				key: "cname",
-				title: "类型"
+				key: "name",
+				title: "name"
 			}, {
-				key: "collectionId",
-				title: "测试",
+				key: "emil",
+				title: "email"
+			}, {
+				key: "wechat",
+				title: "wechat"
+			}, {
+				key: "age",
+				title: "age"
+			}, {
+				key: "sex",
+				title: "sex",
 				type: "map",
 				computed: {
-					"0": "李白",
-					"1": "杜甫",
-					"2": "白居易",
-					"3": "王安石"
+					"0": "nv",
+					"1": "nan"
 				}
 			}, {
-				key: "icon",
-				title: "图标",
-				type: "image",
-				width: "30px",
-				height: "30px"
+				key: "school",
+				title: "school",
+				type: "map",
+				computed: {
+					"0": "U.S.A university",
+					"1": "JP university",
+					"2": "KOR university"
+				}
 			}, {
-				key: "ename",
-				title: "名称"
-			},
-			{
-				key: "tid",
-				title: "TID"
+				key: "city",
+				title: "city",
+				type: "map",
+				computed: {
+					"0": "Hangzhou",
+					"1": "Beijing",
+					"2": "Shanghai",
+					"3": "Qingdao"
+				}
 			}, {
-				key: "tname",
-				title: "节目名称"
+				key: "like",
+				title: "like",
+				type: "map",
+				computed: {
+					"0": "Reading",
+					"1": "Swimming"
+				}
 			}
 		]
 	});
+	var data = [{
+		"icon": "uiduck/assets/head.jpg",
+		"name": "nciezz",
+		"emil": "hzdz163@163.com",
+		"wechat": "N1CEZZ",
+		"age": "24",
+		"sex": 1,
+		"school": 2,
+		"city": 3,
+		"like": 1
+	}, {
+		"icon": "uiduck/assets/head.jpg",
+		"name": "nciezz",
+		"emil": "hzdz163@163.com",
+		"wechat": "N1CEZZ",
+		"age": "24",
+		"sex": 1,
+		"school": 1,
+		"city": 3,
+		"like": 1
+	}, {
+		"icon": "uiduck/assets/head.jpg",
+		"name": "nciezz",
+		"emil": "hzdz163@163.com",
+		"wechat": "N1CEZZ",
+		"age": "24",
+		"sex": 1,
+		"school": 2,
+		"city": 3,
+		"like": 1
+	}, {
+		"icon": "uiduck/assets/head.jpg",
+		"name": "nciezz",
+		"emil": "hzdz163@163.com",
+		"wechat": "N1CEZZ",
+		"age": "24",
+		"sex": 1,
+		"school": 2,
+		"city": 3,
+		"like": 1
+	}, {
+		"icon": "uiduck/assets/head.jpg",
+		"name": "nciezz",
+		"emil": "hzdz163@163.com",
+		"wechat": "N1CEZZ",
+		"age": "24",
+		"sex": 1,
+		"school": 0,
+		"city": 3,
+		"like": 1
+	}, {
+		"icon": "uiduck/assets/head.jpg",
+		"name": "nciezz",
+		"emil": "hzdz163@163.com",
+		"wechat": "N1CEZZ",
+		"age": "24",
+		"sex": 1,
+		"school": 2,
+		"city": 3,
+		"like": 1
+	}]
+	uiduck2.setData(data, false);
 
 	function getRow(e) {
 		alert(JSON.stringify(uiduck.getRow(e)))
@@ -104,6 +186,7 @@
 	function viewCompletely() {
 		window.location.href = "completely-cn.html";
 	}
+
 	function viewEnDocument() {
 		window.location.href = "index.html";
 	}
