@@ -1,6 +1,8 @@
 # uiduck
 ### The front-end table plug-in is powerful, supports front-end and back-end pagination, template syntax, and can access the three-party UI library. <br>
 ![]( https://ftp.bmp.ovh/imgs/2019/12/7ae8cdfa99340008.png )
+### [uiduck demo](https://nicez2.github.io/uiduck/index.html)<br>
+
 * 1.Author：nicezz  email:hzdz163@163.com <br>
 ### Preparatory work
 - Uiduck relies on jQuery
