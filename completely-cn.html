@@ -12,10 +12,10 @@
 </head>
 
 <body>
-	<div style="width:60%;padding: 0 20%;padding-bottom: 200px;">
+	<div style="width:80%;padding: 0 10%;padding-bottom: 200px;">
 		<div style="padding-top: 3%;padding-bottom: 2%;">
 			<h1 class="" style="font-size:100px;font-weight:900;color:#409EFF">uiduck </h1>
-			<h1 class="" style="font-size:24px;font-weight:500;color:#E6A23C">前端表格插件 / 功能强大 / 支持前后端分页 / 模板语法 / 可接入三方UI库
+			<h1 class="" style="font-size:24px;font-weight:500;color:#E6A23C">前端表格插件 / 支持前后端分页 / 模板语法 / 支持其他UI
 			</h1>
 		</div>
 		<div style="padding-bottom: 2%;">
@@ -33,29 +33,42 @@
 		<script type="text/html" id="barDemo">
 			<button class="uiduck-btn" onClick=getRow(uiduck5,this);>获取此行数据</button>
 		</script>
-		<h2 style="font-size:36px;margin:20px"></h2>
-		<div id="table"></div>
-		<HR>
-		<h2 style="font-size:36px;margin:20px">网络数据</h2>
-		<div id="table-net-data"></div>
-		<HR>
-		<h2 style="font-size:36px;margin:20px">本地数据</h2>
-		<div id="table-local-data"></div>
-		<HR>
-		<h2 style="font-size:36px;margin:20px">简单分页</h2>
-		<div id="table-simple-page"></div>
-		<HR>
-		<h2 style="font-size:36px;margin:20px">English language</h2>
-		<div id="table-english"></div>
-		<HR>
-		<h2 style="font-size:36px;margin:20px">关键词高亮</h2>
-		<h3>当前设置为微信字段，通过ud-keyWord属性指定相关列的key</h3>
-		<input id="search" ud-keyWord="wechat" class="uiduck-input" /><button class="uiduck-btn"
-			onClick=setData();>搜索</button>
-		<div id="table-highlight"></div>
-		<HR>
-		<h2 style="font-size:36px;margin:20px">自动翻页</h2>
-		<div id="table-auto-next"></div>
+		<div class="container">
+			<h2 class="title">综合演示</h2>
+			<div id="table"></div>
+		</div>
+		<div class="container">
+			<h2 class="title">网络数据（ 前端分页 ）</h2>
+			<div id="table-net-data"></div>
+		</div>
+		<div class="container">
+			<h2 class="title"> 网络数据（ 后端分页 ）</h2>
+			<div id="table-net-data-back"></div>
+		</div>
+		<div class="container">
+			<h2 class="title">本地数据</h2>
+			<div id="table-local-data"></div>
+		</div>
+		<div class="container">
+			<h2 class="title">简单分页</h2>
+			<div id="table-simple-page"></div>
+		</div>
+		<div class="container">
+			<h2 class="title">English language</h2>
+			<div id="table-english"></div>
+		</div>
+		<div class="container">
+			<h2 class="title">关键词高亮</h2>
+			<h3>当前设置为微信字段，通过ud-keyWord属性指定相关列的key</h3>
+			<input id="search" ud-keyWord="wechat" class="uiduck-input" /><button class="uiduck-btn"
+				onClick=setData();>搜索</button>
+			<div id="table-highlight"></div>
+		</div>
+		<div class="container">
+			<h2 class="title">自动翻页</h2>
+			<div id="table-auto-next"></div>
+		</div>
+
 	</div>
 </body>
 <script language="Javascript" src="uiduck/js/jquery.min.js"></script>
@@ -188,6 +201,62 @@
 				title: "节目名称"
 			}
 		]
+	});
+
+	
+	var uiduckNetBack = new uiduck('uiduckNetBack', {
+		templateId: "table-net-data-back",
+		url: {
+			url: "http://rap2api.taobao.org/app/mock/251329/order/passList",
+			type: "get",
+			dataType: "json",
+			limit: "pageSize",
+			page: "pageNum",
+			key: "data",
+			total: "total"
+		},
+		loading: {
+			icon: "uiduck-loading-6",
+			time: 1000
+		},
+		language: {
+			tag: 'English'
+		},
+		page: true,
+		pageOptions: {
+			layout: ["total", , "prev", "next", "last"],
+			dataType: "back"
+		},
+		fieldOptions: [{
+			index: true,
+			title: "序号"
+		}, {
+			key: "name",
+			title: "商品名称"
+		}, {
+			key: "firstLetter",
+			title: "首字母"
+		}, {
+			key: "showStatus",
+			title: "是否显示",
+			type: "map",
+			computed: {
+				1: "显示",
+				2: "隐藏",
+			}
+		}, {
+			key: "productCount",
+			title: "商品数量"
+		}, {
+			key: "productCommentCount",
+			title: "备货数量"
+		}, {
+			key: "logo",
+			title: "logo",
+			type: "image",
+			width: "20px",
+			height: "20px"
+		}]
 	});
 
 	var uiduck2 = new uiduck('uiduck2', {
@@ -626,7 +695,7 @@
 	uiduck6.setData(data, false);
 
 
-	function getRow(e,index) {
+	function getRow(e, index) {
 		alert(JSON.stringify(e.getRow(index)))
 	}
 

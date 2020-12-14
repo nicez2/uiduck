@@ -49,8 +49,8 @@ var hello = new uiduck('hello', {
 				title: "TID"
 			}, {
 				key: "tname",
-				title: "				key: "tname",
-"
+				title: "",				
+				key: "tname"
 			}
 		]
 	});

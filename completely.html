@@ -12,11 +12,11 @@
 </head>
 
 <body>
-	<div style="width:60%;padding: 0 20%;padding-bottom: 200px;">
+	<div style="width:80%;padding: 0 10%;padding-bottom: 200px;">
 		<div style="padding-top: 3%;padding-bottom: 2%;">
 			<h1 class="" style="font-size:100px;font-weight:900;color:#409EFF">uiduck </h1>
-			<h1 class="" style="font-size:24px;font-weight:500;color:#E6A23C">ront end table plug-in / powerful /
-				supporting front-end paging / template syntax / access to three-party UI Library
+			<h1 class="" style="font-size:24px;font-weight:500;color:#E6A23C"> front end table plug-in /
+				supporting front-end paging / supporting template syntax / supporting other ui
 			</h1>
 		</div>
 		<div style="padding-bottom: 2%;">
@@ -34,30 +34,45 @@
 		<script type="text/html" id="barDemo">
 			<button class="uiduck-btn" onClick=getRow(uiduck5,this);>get the data of this row</button>
 		</script>
-		<h2 style="font-size:36px;margin:20px"></h2>
-		<div id="table"></div>
-		<HR>
-		<h2 style="font-size:36px;margin:20px"> Network data</h2>
-		<div id="table-net-data"></div>
-		<HR>
-		<h2 style="font-size:36px;margin:20px"> Local data</h2>
-		<div id="table-local-data"></div>
-		<HR>
-		<h2 style="font-size:36px;margin:20px">Simple paging</h2>
-		<div id="table-simple-page"></div>
-		<HR>
-		<h2 style="font-size:36px;margin:20px">English language</h2>
-		<div id="table-english"></div>
-		<HR>
-		<h2 style="font-size:36px;margin:20px"> Keyword highlight</h2>
-		<h3>Currently, it is set to wechat field, and the key of related column is specified through UD keyword
-			attribute</h3>
-		<input id="search" ud-keyWord="wechat" class="uiduck-input" /><button class="uiduck-btn"
-			onClick=setData();>search </button>
-		<div id="table-highlight"></div>
-		<HR>
-		<h2 style="font-size:36px;margin:20px">Auto flip</h2>
-		<div id="table-auto-next"></div>
+		<div class="container">
+			<h2 class="title">Comprehensive</h2>
+			<div id="table"></div>
+		</div>
+		<div class="container">
+			<h2 class="title"> Network data</h2>
+			<div id="table-net-data"></div>
+		</div>
+		<div class="container">
+			<h2 class="title"> Network data back pagination</h2>
+			<div id="table-net-data-back"></div>
+		</div>
+		<div class="container">
+			<h2 class="title"> Local data</h2>
+			<div id="table-local-data"></div>
+		</div>
+		<div class="container">
+			<h2 class="title">Simple paging</h2>
+			<div id="table-simple-page"></div>
+		</div>
+		<div class="container">
+			<h2 class="title">English language</h2>
+			<div id="table-english"></div>
+		</div>
+
+		<div class="container">
+			<h2 class="title"> Keyword highlight</h2>
+			<h3 class="title">Currently, it is set to wechat field, and the key of related column is specified through
+				UD keyword
+				attribute</h3>
+			<input id="search" ud-keyWord="wechat" class="uiduck-input" /><button class="uiduck-btn"
+				onClick=setData();>search </button>
+			<div id="table-highlight"></div>
+		</div>
+
+		<div class="container">
+			<h2 class="title">Auto flip</h2>
+			<div id="table-auto-next"></div>
+		</div>
 	</div>
 </body>
 <script language="Javascript" src="uiduck/js/jquery.min.js"></script>
@@ -161,17 +176,17 @@
 		},
 		fieldOptions: [{
 				index: true,
-				title: "序号"
+				title: "index"
 			},
 			{
 				key: "cid",
-				title: "ID"
+				title: "cid"
 			}, {
 				key: "cname",
-				title: "类型"
+				title: "cname"
 			}, {
 				key: "collectionId",
-				title: "测试",
+				title: "collectionId",
 				type: "map",
 				computed: {
 					"0": "李白",
@@ -181,21 +196,77 @@
 				}
 			}, {
 				key: "ename",
-				title: "名称"
+				title: "ename"
 			}, {
 				key: "icon",
-				title: "图标",
+				title: "icon",
 				type: "image",
 				width: "20px",
 				height: "20px"
 			}, {
 				key: "tid",
-				title: "TID"
+				title: "tid"
 			}, {
 				key: "tname",
-				title: "节目名称"
+				title: "tname"
 			}
 		]
+	});
+
+
+	var uiduckNetBack = new uiduck('uiduckNetBack', {
+		templateId: "table-net-data-back",
+		url: {
+			url: "http://rap2api.taobao.org/app/mock/251329/order/passList",
+			type: "get",
+			dataType: "json",
+			limit: "pageSize",
+			page: "pageNum",
+			key: "data",
+			total: "total"
+		},
+		loading: {
+			icon: "uiduck-loading-6",
+			time: 1000
+		},
+		language: {
+			tag: 'English'
+		},
+		page: true,
+		pageOptions: {
+			layout: ["total", , "prev", "next", "last"],
+			dataType: "back"
+		},
+		fieldOptions: [{
+			index: true,
+			title: "index"
+		}, {
+			key: "name",
+			title: "name"
+		}, {
+			key: "firstLetter",
+			title: "firstLetter"
+		}, {
+			key: "showStatus",
+			title: "showStatus",
+			type: "map",
+			computed: {
+				1: "show",
+				2: "hidden",
+			}
+		}, {
+			key: "productCount",
+			title: "productCount"
+		}, {
+			key: "productCommentCount",
+			title: "productCommentCount"
+		}, {
+			key: "logo",
+			title: "logo",
+			type: "image",
+			width: "20px",
+			height: "20px"
+		}]
 	});
 
 	var uiduck2 = new uiduck('uiduck2', {
@@ -357,17 +428,17 @@
 		},
 		fieldOptions: [{
 				index: true,
-				title: "序号"
+				title: "index"
 			},
 			{
 				key: "cid",
-				title: "ID"
+				title: "cid"
 			}, {
 				key: "cname",
-				title: "类型"
+				title: "cname"
 			}, {
 				key: "collectionId",
-				title: "测试",
+				title: "collectionId",
 				type: "map",
 				computed: {
 					"0": "李白",
@@ -377,19 +448,19 @@
 				}
 			}, {
 				key: "ename",
-				title: "名称"
+				title: "ename"
 			}, {
 				key: "icon",
-				title: "图标",
+				title: "icon",
 				type: "image",
 				width: "20px",
 				height: "20px"
 			}, {
 				key: "tid",
-				title: "TID"
+				title: "tid"
 			}, {
 				key: "tname",
-				title: "节目名称"
+				title: "tname"
 			}
 		]
 	});
@@ -646,7 +717,7 @@
 	uiduck6.setData(data, false);
 
 
-	function getRow(e,index) {
+	function getRow(e, index) {
 		alert(JSON.stringify(e.getRow(index)))
 	}
 

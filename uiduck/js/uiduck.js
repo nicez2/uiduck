@@ -1,7 +1,7 @@
 /***
  * Author:nicezz
  * E-mail:hzdz163@163.com
- * Version:1.0.1
+ * Version:2.0.1
  * 本程序的版权遵循创作共用原则，你可以免费使用、修改、发布本程序，但此注释不可删除并请注明原作者
  * The copyright of this program follows the principle of creative Commons, you can use,
  * modify and distribute this program for free, but this annotation cannot be deleted,
@@ -54,7 +54,7 @@ var uiduck = function (o, e) {
         pageOptions: {
             style: "",
             limit: "",
-            dataType: "back",
+            dataType: "front",
             limits: ['5', '10', '15', '20', '25', '30'],
             layout: ["total", "home", "prev", "next", "last", "set", "jump"],
             index: 0,
@@ -243,31 +243,43 @@ var uiduck = function (o, e) {
         getAjaxData: function (e, check) {
             $.ajax({
                 //请求方式
+                url: e.url.url,
                 type: e.url.type,
+                headers: e.url.headers,
                 data: e.url.data,
                 async: false,
-                dataType: "jsonp", // 返回的数据类型，设置为JSONP方式
-                //请求地址
-                url: e.url.url,
-                //数据，json字符串
+                dataType: e.url.dataType == undefined ? "jsonp" : e.url.dataType, // 返回的数据类型，设置为JSONP方式
                 //请求成功
                 success: function (result) {
                     if (e.url.key) {
-                        var key = e.url.key
-                        e.setData(result[key], check);
+                        var keys = e.url.key.split('.');
+                        if (keys.length == 1) {
+                            uiduck.setData(result[keys], check);
+                        } else if (keys.length == 2) {
+                            uiduck.setData(result[keys[0]][keys[1]], check);
+                        } else if (keys.length == 3) {
+                            uiduck.setData(result[keys[0]][keys[1]][keys[2]], check);
+                        }
+                        if (e.pageOptions.dataType == 'back') {
+                            var total = e.url.total.split('.');
+                            if (total.length == 1) {
+                                e.pageOptions.count = parseInt(result[total]);
+                            } else if (total.length == 2) {
+                                e.pageOptions.count = parseInt(result[total[0]][total[1]]);
+                            } else if (total.length == 3) {
+                                e.pageOptions.count = parseInt(result[total[0]][total[1]][total[2]]);
+                            }
+                        }
+
                     } else {
-                        e.setData(result, check);
+                        uiduck.setData(result, check);
                     }
                 },
                 //请求失败，包含具体的错误信息
                 error: function (e) {
-                    e.setData([], check)
+                    uiduck.setData([], check)
                 }
             });
-        },
-        setAjaxCount: function (e) {
-            uiduck.pageOptions.count = parseInt(e);
-            uiduck.render(uiduck, true);
         },
         dataFilter: function (e) {
             if (uiduck.url == false) {
@@ -294,7 +306,6 @@ var uiduck = function (o, e) {
             }
         },
         render: function (uiduck, refresh) {
-            $("#" + uiduck.templateId).empty();
             var c = '';
             if (uiduck.style.tbClass) {
                 c += '<table id=' + uiduck.udKey + ' class="' + uiduck.style.tbClass + '">';
@@ -314,6 +325,7 @@ var uiduck = function (o, e) {
                     c += (uiduck.setPage(uiduck));
                 }
             }
+            $("#" + uiduck.templateId).empty();
             $("#" + uiduck.templateId).append(c);
             if (uiduck.loading && uiduck.data.length > 0) {
                 uiduck.showLoading(uiduck);
@@ -324,6 +336,7 @@ var uiduck = function (o, e) {
             if (uiduck.loading) {
                 uiduck.hideLoading();
             }
+            $(".uiduck_tr").css('visibility', 'visible');
         },
         setHead: function (uiduck) {
             var g = "<tr>";
@@ -378,9 +391,9 @@ var uiduck = function (o, e) {
                         uiduckJL = e.data;
                     } else {
                         if (f) {
-                            uiduck.url.data = {
-                                "limit": parseInt(e.pageOptions.limit),
-                                "page": parseInt(e.pageOptions.index + 1)
+                            e.url.data = {
+                                [e.url.limit]: parseInt(e.pageOptions.limit),
+                                [e.url.page]: parseInt(e.pageOptions.index + 1)
                             };
                             uiduck.getAjaxData(e, false);
                         }
@@ -399,7 +412,7 @@ var uiduck = function (o, e) {
                         uiduckJL = e.data;
                     } else {
                         if (f) {
-                            uiduck.getAjaxData(e, null, null, false);
+                            uiduck.getAjaxData(e, false);
                         }
                         uiduckJL = uiduck.data;
                     }
@@ -542,7 +555,7 @@ var uiduck = function (o, e) {
             var loadingHtml = '<img id="' + uiduck.templateId + '-ud-loading" style="position: absolute;' + position + ';width: ' + Width + '; height: ' + Width + '; z-index: 1003" src="uiduck/assets/' + uiduck.loading.icon + '.gif" />';
             $("#" + uiduck.templateId).append(loadingHtml);
             $("#" + uiduck.templateId + "-ud-loading").css('display', 'block');
-            $(".uiduck_tr").css('visibility', 'visible');
+
         },
         hideLoading: function (e) {
             setTimeout(function () {
@@ -692,7 +705,7 @@ var uiduck = function (o, e) {
                     }
                 }
                 if (count > 1) {
-                    if (e.pageOptions.index <= parseInt(e.pageOptions.count - 2)) {
+                    if (e.pageOptions.index <= parseInt(count - 2)) {
                         if (e.pageOptions.layout.indexOf('next') != -1) {
                             g += '<a class="layui-laypage-next" onclick="' + o + '.nextPage();" >' + e.language.options.udNext + '</a>';
                         }
@@ -755,7 +768,7 @@ var uiduck = function (o, e) {
                     }
                 }
                 if (count > 1) {
-                    if (e.pageOptions.index <= parseInt(e.pageOptions.count - 2)) {
+                    if (e.pageOptions.index <= parseInt(count - 2)) {
                         if (e.pageOptions.layout.indexOf('next') != -1) {
                             g += '<a class="layui-laypage-next" onclick="' + o + '.nextPage();" >' + e.language.options.udNext + '</a>';
                         }
@@ -853,14 +866,32 @@ var uiduck = function (o, e) {
                 }
             }
         },
-        lastPage: function (e) {
-            uiduck.pageOptions.index = parseInt(uiduck.pageOptions.count - 1);
+        lastPage: function () {
             if (uiduck.url == false) {
+                var count = parseInt(uiduck.data.length / uiduck.pageOptions.limit);
+                if (uiduck.data.length % uiduck.pageOptions.limit > 0) {
+                    count += 1;
+                }
+                uiduck.pageOptions.index = count - 1;
                 uiduck.render(uiduck, false);
             } else {
                 if (uiduck.pageOptions.dataType == 'back') {
-                    uiduck.render(uiduck, true);
+                    var count = parseInt(uiduck.pageOptions.count / uiduck.pageOptions.limit);
+                    if (count % uiduck.pageOptions.limit > 0) {
+                        count += 1;
+                    }
+                    uiduck.url.data = {
+                        "pageSize": parseInt(uiduck.pageOptions.limit),
+                        "pageNum": count
+                    };
+                    uiduck.pageOptions.index = count - 1
+                    uiduck.getAjaxData(uiduck, false);
                 } else if (uiduck.pageOptions.dataType == 'front') {
+                    var count = parseInt(uiduck.data.length / uiduck.pageOptions.limit);
+                    if (uiduck.data.length % uiduck.pageOptions.limit > 0) {
+                        count += 1;
+                    }
+                    uiduck.pageOptions.index = count - 1;
                     uiduck.render(uiduck, false);
                 }
             }
@@ -990,7 +1021,7 @@ var uiduck = function (o, e) {
                 options = {
                     "udHome": "Home",
                     "udTotal": "Total item",
-                    "udList": "item",
+                    "udList": "",
                     "udPrev": "Prev",
                     "udNext": "Next",
                     "udLast": "Last",
