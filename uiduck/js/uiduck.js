@@ -722,7 +722,12 @@ var uiduck = function (o, e) {
                     }
                 }
                 if (e.pageOptions.layout.indexOf('total') != -1) {
-                    g += '<span>' + e.language.options.udTotal + ' ' + e.data.length + ' ' + e.language.options.udList + '</span>';
+                    if (e.pageOptions.dataType == 'back') {
+                        g += '<span>' + e.language.options.udTotal + ' ' + e.pageOptions.count + ' ' + e.language.options.udList + '</span>';
+                    } else {
+                        g += '<span>' + e.language.options.udTotal + ' ' + e.data.length + ' ' + e.language.options.udList + '</span>';
+                    }
+
                 }
                 if (e.pageOptions.layout.indexOf('set') != -1) {
                     g += '<span class="uiduck-page-limits"><select id="ud-page-select" onchange="' + o + '.changeLimit(this.value)">';
