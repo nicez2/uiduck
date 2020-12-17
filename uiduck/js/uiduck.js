@@ -443,6 +443,8 @@ var uiduck = function (o, e) {
                                     h += "<td  class=" + e.style.tdClass + ">" + uiduckFO[k].computed[uiduckJL[i][keys]] + "</td>";
                                 } else if (uiduckFO[k].type == 'image') {
                                     h += "<td  class=" + e.style.tdClass + "><img style='width:" + uiduckFO[k].width + ";height:" + uiduckFO[k].height + "' src=" + uiduckJL[i][keys] + "></td>";
+                                } else if (uiduckFO[k].type == 'function') {
+                                    h += "<td  class=" + e.style.tdClass + ">" + uiduckFO[k].function(uiduckJL[i][keys]) + "</td>";
                                 } else {
                                     h += "<td  class=" + e.style.tdClass + ">" + uiduckJL[i][keys] + "</td>";
                                 }
@@ -468,6 +470,8 @@ var uiduck = function (o, e) {
                                         h += "<td  class=" + e.style.tdClass + ">" + uiduckFO[k].computed[uiduckJL[i][keys]] + "</td>";
                                     } else if (uiduckFO[k].type == 'image') {
                                         h += "<td  class=" + e.style.tdClass + "><img style='width:" + uiduckFO[k].width + ";height:" + uiduckFO[k].height + "' src=" + uiduckJL[i][keys] + "></td>";
+                                    } else if (uiduckFO[k].type == 'function') {
+                                        h += "<td  class=" + e.style.tdClass + ">" + uiduckFO[k].function(uiduckJL[i][keys]) + "</td>";
                                     } else {
                                         h += "<td  class=" + e.style.tdClass + ">" + uiduckJL[i][keys] + "</td>";
                                     }
@@ -512,6 +516,8 @@ var uiduck = function (o, e) {
                                                 h += "<td  class=" + e.style.tdClass + ">" + uiduckFO[k].computed[uiduckJL[i][keys]] + "</td>";
                                             } else if (uiduckFO[k].type == 'image') {
                                                 h += "<td  class=" + e.style.tdClass + "><img style='width:" + uiduckFO[k].width + ";height:" + uiduckFO[k].height + "' src=" + uiduckJL[i][keys] + "></td>";
+                                            } else if (uiduckFO[k].type == 'function') {
+                                                h += "<td  class=" + e.style.tdClass + ">" + uiduckFO[k].function(uiduckJL[i][keys]) + "</td>";
                                             } else {
                                                 h += "<td  class=" + e.style.tdClass + ">" + uiduckJL[i][keys] + "</td>";
                                             }
