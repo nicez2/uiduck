@@ -37,6 +37,9 @@
 <script language="Javascript" src="uiduck/js/json2.js"></script>
 <script language="Javascript" src="uiduck/js/uiduck.js"></script>
 <script LANGUAGE="javascript">
+	function timeHandel(val) {
+		return "this is " + val
+	}
 	var uiduck2 = new uiduck('uiduck2', {
 		templateId: "table",
 		loading: {
@@ -93,13 +96,8 @@
 			}, {
 				key: "city",
 				title: "city",
-				type: "map",
-				computed: {
-					"0": "Hangzhou",
-					"1": "Beijing",
-					"2": "Shanghai",
-					"3": "Qingdao"
-				}
+				type: "function",
+				function: timeHandel
 			}, {
 				key: "like",
 				title: "like",
