@@ -1,9 +1,9 @@
 # uiduck
 ### 前端表格插件，功能强大，支持前后端分页，模板语法，可接入三方UI库。<br>
-![](https://ftp.bmp.ovh/imgs/2019/12/7ae8cdfa99340008.png)
+[![r8GglF.png](https://s3.ax1x.com/2020/12/17/r8GglF.png)](https://imgchr.com/i/r8GglF)
 
-* 1.Author：nicezz email:hzdz163@163.com<br>
-
+### [Demo](https://nicez2.github.io/uiduck/index.html)
+### [English documents](https://github.com/nicez2/uiduck/blob/master/readme.md)<br>
 ### 准备工作
 - uiduck依赖于JQuery
 - 在代码中引用上述文件
@@ -24,9 +24,6 @@ var hello = new uiduck('hello', {
 			url: "http://data.live.126.net/livechannel/sub/3.json",
 			type: "POST",
 			key: "sublives"
-		},
-		loading: {
-			icon: "uiduck-loading-6"
 		},
 		page: true,
 		pageOptions: {
