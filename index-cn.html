@@ -38,16 +38,11 @@
 <script language="Javascript" src="uiduck/js/uiduck.js"></script>
 <script LANGUAGE="javascript">
 	function timeHandel(val) {
-		return "this is " + val
+		return new Date()
 	}
 	var uiduck2 = new uiduck('uiduck2', {
 		templateId: "table",
-		loading: {
-			icon: "uiduck-loading-6"
-		},
-		language: {
-			tag: 'English'
-		},
+
 		page: true,
 		pageOptions: {
 			limit: 5,

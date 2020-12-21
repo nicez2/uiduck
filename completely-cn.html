@@ -23,6 +23,7 @@
 			<button class=" uiduck-btn-normal" onClick=changeLoading();>随机切换加载动画</button>
 			<button class="uiduck-btn-normal" onClick=changeBlur();>背景模糊</button>
 			<button class="uiduck-btn-normal" onClick=changeLanguage();>多语言随机切换</button>
+			<button class="uiduck-btn-normal" onClick=refresh();>刷新</button>
 			<button class="uiduck-btn-normal" onClick=newVersion();>获取最新版本</button>
 		</div>
 
@@ -203,7 +204,7 @@
 		]
 	});
 
-	
+
 	var uiduckNetBack = new uiduck('uiduckNetBack', {
 		templateId: "table-net-data-back",
 		url: {
@@ -847,6 +848,12 @@
 		});
 		uiduck1.setData(data, false)
 	}
+
+	function refresh() {
+		uiduck1.refresh()
+	}
+
+
 
 	function changeBlur(e) {
 		uiduck1 = new uiduck('uiduck1', {

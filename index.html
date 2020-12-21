@@ -38,20 +38,18 @@
 <script language="Javascript" src="uiduck/js/uiduck.js"></script>
 <script LANGUAGE="javascript">
 	function timeHandel(val) {
-		return "this is " + val
+		return new Date()
 	}
 	var uiduck2 = new uiduck('uiduck2', {
 		templateId: "table",
-		loading: {
-			icon: "uiduck-loading-6"
-		},
-		language: {
-			tag: 'English'
-		},
+
 		page: true,
 		pageOptions: {
 			limit: 5,
 			limits: ['5', '10', '15', '20', '25']
+		},
+		language: {
+			tag: 'English'
 		},
 		page: true,
 		fieldOptions: [{
@@ -66,10 +64,10 @@
 				height: "20px"
 			}, {
 				key: "name",
-				title: "name"
+				title: "user",
+				colspan: 2,
 			}, {
 				key: "emil",
-				title: "email"
 			}, {
 				key: "wechat",
 				title: "wechat"
@@ -95,7 +93,7 @@
 				}
 			}, {
 				key: "city",
-				title: "city",
+				title: "time",
 				type: "function",
 				function: timeHandel
 			}, {

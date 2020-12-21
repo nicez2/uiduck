@@ -63,7 +63,6 @@ var uiduck = function (o, e) {
         fieldOptions: [],
         udKey: 'uiduck_' + (new Date()).valueOf(),
         setOptions: function (b) {
-            console.clear();
             var refresh;
             if (b.templateId == undefined) {
                 console.error("error! table's templateId is undefined")
@@ -233,10 +232,6 @@ var uiduck = function (o, e) {
                     }
                 }, uiduck.autoNext.time)
             }
-            console.log('%cHi uiduck', "color:black;font-weight:bold;");
-            console.log('%cGithub https://github.com/nicez2/uiduck', "color:blue;");
-            //可删除
-            console.log('%c本程序的版权遵循创作共用原则，你可以免费使用、修改、发布本程序，但顶部注释不可删除并请注明原作者', "color:gray;");
             uiduck.pageOptions.index = 0;
             uiduck.render(uiduck, refresh);
         },
@@ -340,20 +335,33 @@ var uiduck = function (o, e) {
         },
         setHead: function (uiduck) {
             var g = "<tr>";
+            var mergeIndex = 0;
             for (var i = 0; i < uiduck.fieldOptions.length; i++) {
                 if (uiduck.fieldOptions[i].index) {
                     uiduck.index = true
                 }
+                if (uiduck.fieldOptions[i].selection) {
+                    g += "<th class='" + uiduck.style.thClass + "'  style='font-weight:blod;color: #909399;'><label class='el-checkbox'><span class='el-checkbox__input'><span class='el-checkbox__inner'></span><input type='checkbox' aria-hidden='false' class='el-checkbox__original' value=''></span><!----></label></th>"
+                    continue;
+                }
+                if (i < mergeIndex) {
+                    continue;
+                }
+                var colspan = uiduck.fieldOptions[i].colspan == undefined ? 1 : uiduck.fieldOptions[i].colspan;
+                if (colspan > 1) {
+                    mergeIndex = colspan + i
+                }
+                uiduck.fieldOptions[i].title == undefined ? uiduck.fieldOptions[i].title = '' : uiduck.fieldOptions[i].title;
                 if (uiduck.fieldOptions[i].width != undefined) {
                     if (uiduck.fieldOptions[i].width.indexOf("%") != -1) {
-                        g += "<th class='" + uiduck.style.thClass + "' style='width:" + uiduck.fieldOptions[i].width + ";font-weight:blod'>" + uiduck.fieldOptions[i].title + "</th>"
+                        g += "<th class='" + uiduck.style.thClass + "' colspan='" + colspan + "' style='width:" + uiduck.fieldOptions[i].width + ";font-weight:blod;color: #909399;'>" + uiduck.fieldOptions[i].title + "</th>"
                     } else if (uiduck.fieldOptions[i].width.indexOf("px") != -1) {
-                        g += "<th class='" + uiduck.style.thClass + "' style='width:" + uiduck.fieldOptions[i].width + ";font-weight:blod'>" + uiduck.fieldOptions[i].title + "</th>"
+                        g += "<th class='" + uiduck.style.thClass + "' colspan='" + colspan + "' style='width:" + uiduck.fieldOptions[i].width + ";font-weight:blod;color: #909399;'>" + uiduck.fieldOptions[i].title + "</th>"
                     } else if (uiduck.fieldOptions[i].width.indexOf("px") == -1 && uiduck.fieldOptions[i].width.indexOf("%") == -1) {
-                        g += "<th class='" + uiduck.style.thClass + "' style='width:" + uiduck.fieldOptions[i].width + "px;font-weight:blod'>" + uiduck.fieldOptions[i].title + "</th>"
+                        g += "<th class='" + uiduck.style.thClass + "' colspan='" + colspan + "'  style='width:" + uiduck.fieldOptions[i].width + "px;font-weight:blod;color: #909399;'>" + uiduck.fieldOptions[i].title + "</th>"
                     }
                 } else {
-                    g += "<th class='" + uiduck.style.thClass + "' style='font-weight:blod'>" + uiduck.fieldOptions[i].title + "</th>"
+                    g += "<th class='" + uiduck.style.thClass + "'  colspan='" + colspan + "'  style='font-weight:blod;color: #909399;'>" + uiduck.fieldOptions[i].title + "</th>"
                 }
             }
             if (uiduck.rightTool) {
@@ -433,10 +441,16 @@ var uiduck = function (o, e) {
             if (e.topBar == undefined && uiduckJL != undefined) {
                 for (var i = 0; i < uiduckJL.length; i++) {
                     h += "<tr  id=ud-tr-" + i + " ud-tr-num=" + i + " class='uiduck_tr " + e.style.trClass + "' style='visibility:hidden'>";
-                    if (e.index) {
-                        h += "<td class=" + e.style.tdClass + ">" + parseInt(uiduck.pageOptions.limit * uiduck.pageOptions.index + 1 + i) + "</td>";
-                    }
+
                     for (var k = 0; k < uiduckFO.length; k++) {
+
+                        if (uiduckFO[k].selection) {
+                            h += "<td class=" + e.style.tdClass + "><label class='el-checkbox is-checked'><span class='el-checkbox__input is-checked'><span class='el-checkbox__inner'></span><input type='checkbox' aria-hidden='false' class='el-checkbox__original' value='' ></span><!----></label></td>";
+                        }
+                        if (uiduckFO[k].index) {
+                            h += "<td class=" + e.style.tdClass + ">" + parseInt(uiduck.pageOptions.limit * uiduck.pageOptions.index + 1 + i) + "</td>";
+                            continue
+                        }
                         for (var keys in uiduckJL[i]) {
                             if (keys === uiduckFO[k].key) {
                                 if (uiduckFO[k].type == 'map') {
@@ -1013,6 +1027,9 @@ var uiduck = function (o, e) {
                 uiduck.render(uiduck);
             }
         },
+        refresh: function () {
+            uiduck.setOptions(uiduck);
+        },
         language: function (b) {
             var options = {};
             if (b.language.tag == 'Chinese') {
@@ -1117,6 +1134,7 @@ var uiduck = function (o, e) {
         prevPage: uiduck.prevPage,
         expandPage: uiduck.expandPage,
         changeLimit: uiduck.changeLimit,
-        getRow: uiduck.getRow
+        getRow: uiduck.getRow,
+        refresh: uiduck.refresh
     }
 }

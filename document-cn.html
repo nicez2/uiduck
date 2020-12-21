@@ -78,7 +78,7 @@
 						<td class=""><code>table</code></td>
 					</tr>
 					<tr>
-						<td class="" style="font-weight: 600;" rowspan="5">url</td>
+						<td class="" style="font-weight: 600;" rowspan="9">url</td>
 						<td class=""></td>
 						<td class="">如果设置此属性，uiduck将会请求网络数据资源。使用AJAX跨域请求。</td>
 						<td class="">无默认值</td>
@@ -94,6 +94,11 @@
 						<td class="">无默认值</td>
 					</tr>
 					<tr>
+						<td class="">dataType</td>
+						<td class="">与ajax的dataType同义。</td>
+						<td class="">无默认值</td>
+					</tr>
+					<tr>
 						<td class="">data</td>
 						<td class="">要求为Object或String类型的参数，发送到服务器的数据。</td>
 						<td class="">无默认值</td>
@@ -103,6 +108,22 @@
 						<td class="">返回数据的key。如：list:[{xx:xx},{xx:xx}],将key设置为list即可</td>
 						<td class="">无默认值</td>
 					</tr>
+					<tr>
+						<td class="">limit</td>
+						<td class="">后端分页下返回数据的每页显示条目个数的key。</td>
+						<td class="">无默认值</td>
+					</tr>
+					<tr>
+						<td class="">page</td>
+						<td class="">后端分页下返回数据的当前页数的key。</td>
+						<td class="">无默认值</td>
+					</tr>
+					<tr>
+						<td class="">total</td>
+						<td class="">后端分页下返回数据总条目数的key。</td>
+						<td class="">无默认值</td>
+					</tr>
+
 					<tr>
 						<td class="" style="font-weight: 600;" colspan="2">data</td>
 						<td class="">表格数据，格式为JSON数组，示例:<br><code>[{"name":"张三"},{"name":"李四"}]</code></td>
@@ -197,7 +218,7 @@
 						<td class=""><code>[]</code></td>
 					</tr>
 					<tr>
-						<td class="" style="font-weight: 600;" rowspan="9">fieldOptions</td>
+						<td class="" style="font-weight: 600;" rowspan="10">fieldOptions</td>
 						<td class=""></td>
 						<td class="">表头和数据渲染</td>
 						<td class="">
@@ -233,8 +254,18 @@
 					</tr>
 					<tr>
 						<td class="">type</td>
-						<td class="">字段类型，如images或map</code></td>
+						<td class="">字段类型，如images,map,function</code></td>
 						<td class="">无默认值</td>
+					</tr>
+					<tr>
+						<td class="">function</td>
+						<td class="">当type为function时传入一个自定义的function方法，用于实现自定义计算</code></td>
+						<td class="">无默认值</td>
+					</tr>
+					<tr>
+						<td class="">colspan</td>
+						<td class="">于表头可横跨的列数</code></td>
+						<td class="">1</td>
 					</tr>
 					<tr>
 						<td class="">computed</td>

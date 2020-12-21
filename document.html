@@ -82,7 +82,7 @@
 						<td class=""><code>table</code></td>
 					</tr>
 					<tr>
-						<td class="" style="font-weight: 600; text-align: left;" rowspan="5" _msthash="1390779"
+						<td class="" style="font-weight: 600; text-align: left;" rowspan="9" _msthash="1390779"
 							_msttexthash="35139">url</td>
 						<td class=""></td>
 						<td class="" _msthash="1392079" _msttexthash="6043570" style="text-align: left;">If you set this
@@ -105,11 +105,17 @@
 						<td class="" _msthash="1393249" _msttexthash="496691">There is no default value</td>
 					</tr>
 					<tr>
+						<td class="">dataType</td>
+						<td class="">Synonymed with ajax's dataType</td>
+						<td class="">There is no default value</td>
+					</tr>
+					<tr>
 						<td class="" _msthash="1392534" _msttexthash="45370" style="text-align: left;">data</td>
 						<td class="" _msthash="1393184" _msttexthash="3912662" style="text-align: left;">Data that
 							requires parameters of the Object or String type to be sent to the server.</td>
 						<td class="" _msthash="1393834" _msttexthash="496691">There is no default value</td>
 					</tr>
+
 					<tr>
 						<td class="" _msthash="1393119" _msttexthash="34398">key</td>
 						<td class="" _msthash="1393769" _msttexthash="3849144" style="text-align: left;">Returns the key
@@ -118,11 +124,28 @@
 						<td class="" _msthash="1394419" _msttexthash="496691">There is no default value</td>
 					</tr>
 					<tr>
+						<td class="">limit</td>
+						<td class=""> The key of the number of entries is displayed on each page of the data returned
+							under the back-end page.</td>
+						<td class="">There is no default value</td>
+					</tr>
+					<tr>
+						<td class="">page</td>
+						<td class="">Key of the current number of pages of data returned under back-end pedding.</td>
+						<td class="">There is no default value</td>
+					</tr>
+					<tr>
+						<td class="">total</td>
+						<td class="">The key of the total number of entries for the data is returned under the back-end
+							pedding.</td>
+						<td class="">There is no default value</td>
+					</tr>
+					<tr>
 						<td class="" style="font-weight: 600; text-align: left;" colspan="2" _msthash="1393704"
 							_msttexthash="45370">data</td>
 						<td class="" style="text-align: left;">
 							<font _mstmutation="1" _msthash="1831258" _msttexthash="768482">Table data in JSON array,
-								example:</font><br><code>[{"name":"张三"},{"name":"李四"}]</code>
+								example:</font><br><code>[{"name":"Lee"},{"name":"Tom"}]</code>
 						</td>
 						<td class="">[]</td>
 					</tr>
@@ -241,12 +264,13 @@
 							<font _mstmutation="1" _msthash="1871675" _msttexthash="14164358">An array of parting
 								highlights, such as, after the background parting is converted to , highlighting the key
 								words in the column by highlighting the parting words. </font>
-							<code>Qingdao XXX group</code><code>['Qingdao','XXX','group']</code><code>QingdaoAAAXXXVVgroup[</code><code>Qingdao,XXX,group</code>
+							<code>Qingdao XXX
+								group</code><code>['Qingdao','XXX','group']</code><code>QingdaoAAAXXXVVgroup[</code><code>Qingdao,XXX,group</code>
 						</td>
 						<td class=""><code>[]</code></td>
 					</tr>
 					<tr>
-						<td class="" style="font-weight: 600; text-align: left;" rowspan="9" _msthash="1426555"
+						<td class="" style="font-weight: 600; text-align: left;" rowspan="10" _msthash="1426555"
 							_msttexthash="207506">fieldOptions</td>
 						<td class=""></td>
 						<td class="" style="text-align: left;" _msthash="1427881" _msttexthash="562822">Headers and data
@@ -294,9 +318,21 @@
 					<tr>
 						<td class="" style="text-align: left;" _msthash="1424748" _msttexthash="49374">type</td>
 						<td class="" style="text-align: left;" _msthash="1425411" _msttexthash="837044">Field types,
-							such as images or maps</td>
+							such as images/maps/function</td>
 						<td class="" style="text-align: left;" _msthash="1426074" _msttexthash="496691">There is no
 							default value</td>
+					</tr>
+					<tr>
+						<td class="">function</td>
+						<td class="">When type is function, a custom fusion method is passed in to implement custom
+							calculations</code></td>
+						<td class="">There is no
+							default value</td>
+					</tr>
+					<tr>
+						<td class="">colspan</td>
+						<td class="">The number of columns that the header can span</code></td>
+						<td class="">1</td>
 					</tr>
 					<tr>
 						<td class="" style="text-align: left;" _msthash="1425346" _msttexthash="117962">computed</td>
